@@ -13,50 +13,139 @@
 </div></header>
 
 <div class="hero"><div class="wrap">
-  <h1>縦に置いたタッチパネルを、<br>Mac で正しく動かす。</h1>
-  <p class="tagline">90&deg; 回した外部タッチパネルは、指で触った場所とカーソルの場所がずれます。TouchRotator はその座標を補正します。モニタの設定とウィンドウの配置も、メニューバーから。</p>
-  <div class="cta">
-    <a class="button" href="https://github.com/shusuke-dev/touchrotator-releases/releases/latest">14 日間無料でためす</a>
-    <a class="button ghost" href="#price">価格を見る</a>
+  <div>
+    <h1>縦に置いたタッチパネルを、<br>Mac で正しく動かす。</h1>
+    <p class="tagline">90&deg; 回した外部タッチパネルは、指で触った場所とカーソルの場所がずれます。TouchRotator はその座標を補正します。モニタの設定とウィンドウの配置も、メニューバーから。</p>
+    <div class="cta">
+      <a class="button" href="https://github.com/shusuke-dev/touchrotator-releases/releases/latest">14 日間無料でためす</a>
+      <a class="button ghost" href="#price">価格を見る</a>
+    </div>
+    <p class="note">macOS 13 以降 &middot; Apple Developer ID で署名し、Apple の公証を受けています</p>
   </div>
-  <p class="note">macOS 13 以降 &middot; Apple Developer ID で署名し、Apple の公証を受けています</p>
-  <img class="shot" src="screenshot-ja.png" alt="TouchRotator の設定画面" width="590" height="544">
+  <figure class="shot-figure">
+    <img class="shot" src="screenshot-ja.png" alt="TouchRotator の設定画面（タッチ補正）" width="590" height="544">
+    <figcaption>設定画面の「タッチ補正」。左のリストで<strong>一般 / タッチ補正 / モニター設定 / ウィンドウ配置 / 使い方 / 権限 / 情報</strong>を切り替えます。ターミナルもコマンドも使いません。</figcaption>
+  </figure>
 </div></div>
 
 <section><div class="wrap">
   <h2>3 つの機能</h2>
-  <div class="features">
-    <div class="feature">
-      <h3>タッチ補正</h3>
-      <p>縦向きに回したパネルの座標を補正します。パネルの USB 信号を直接読み取るため、トラックパッドやマウスの操作には影響しません。</p>
+
+  <div class="showcase">
+    <div class="showcase-text">
+      <h3>1. タッチ補正 &mdash; 触った場所が、触った場所として届く</h3>
+      <p>パネルを 90&deg; 回すと、macOS は回す前の向きのまま座標を受け取ります。指の動きに対してカーソルが横に飛んだり、逆向きに動いたりするのはそのためです。TouchRotator はパネルの USB 信号を直接読み取って座標を補正するので、トラックパッドやマウスの操作には影響しません。</p>
+      <p class="step">設定 &rarr; タッチ補正で<b>対象ディスプレイ</b>を選び、<b>タップで自動検出</b>を 1 回。あとは <b>⌥⌘R</b> で ON / OFF。</p>
     </div>
-    <div class="feature">
-      <h3>モニタ設定</h3>
-      <p>解像度・明るさ・ミラーリング・回転を、メニューバーから 1 クリックで。システム設定を開かずに済みます。</p>
+    <figure class="fig">
+      <div class="stage"><div class="compare">
+        <div class="case bad">
+          <div class="panel">
+            <span class="touch"></span>
+            <span class="offset"><span>ずれる</span></span>
+            <span class="pointer"></span>
+          </div>
+          <b>✗ 補正なし</b>
+        </div>
+        <div class="case good">
+          <div class="panel">
+            <span class="touch"></span>
+            <span class="pointer"></span>
+          </div>
+          <b>✓ TouchRotator</b>
+        </div>
+      </div></div>
+      <figcaption>縦置きのパネルで同じ場所を触ったところ。補正がないと指とカーソルが離れ、補正すると指の下にカーソルが来ます。</figcaption>
+    </figure>
+  </div>
+
+  <div class="showcase flip">
+    <div class="showcase-text">
+      <h3>2. モニタ設定 &mdash; システム設定を開かずに 1 クリック</h3>
+      <p>解像度・明るさ・ミラーリング・回転を、メニューバーのポップアップから変えられます。ディスプレイごとにカードが 1 枚並び、繋いでいる台数だけ増えます。</p>
+      <p class="step">メニューバーのアイコンをクリック &rarr; ディスプレイ名を押してカードを開く。</p>
     </div>
-    <div class="feature">
-      <h3>ウィンドウ配置</h3>
-      <p>ウィンドウの位置と大きさを記憶し、モニタを繋ぎ直したときに元へ戻します。</p>
+    <figure class="fig">
+      <div class="stage mock">
+        <div class="mock-bar"><span class="spacer"></span><img class="glyph" src="appicon.png" alt=""><span>100%</span><span>9:41</span></div>
+        <div class="pop">
+          <div class="pop-head">
+            <img class="pop-icon" src="appicon.png" alt="" width="32" height="32">
+            <span>
+              <b>TouchRotator</b>
+              <small><span class="live">●</span> 補正は有効です</small>
+            </span>
+            <span class="sw"></span>
+          </div>
+          <div class="pop-card">
+            <div class="pop-row"><span>外部ディスプレイ</span><span class="dim push">1920 &times; 1080</span></div>
+            <div class="pop-row"><span class="dim">明るさ</span><span class="bar"><i style="width:62%"></i></span><span class="dim">62%</span></div>
+            <div class="seg"><span>0&deg;</span><span class="on">90&deg;</span><span>180&deg;</span><span>270&deg;</span></div>
+          </div>
+          <div class="pop-card">
+            <div class="pop-label">ウィンドウ配置</div>
+            <div class="pop-btn">配置を復元</div>
+            <div class="pop-link">今の配置を記憶</div>
+          </div>
+        </div>
+      </div>
+      <figcaption>メニューバーのポップアップ（図）。上のスイッチが補正の ON / OFF、下がディスプレイとウィンドウ配置です。</figcaption>
+    </figure>
+  </div>
+
+  <div class="showcase">
+    <div class="showcase-text">
+      <h3>3. ウィンドウ配置 &mdash; 繋ぎ直しても、元の場所に戻る</h3>
+      <p>モニタを外すと、開いていたウィンドウは内蔵ディスプレイに寄せられ、繋ぎ直しても戻りません。TouchRotator は配置を記憶しておき、モニタが戻ったときに元の位置と大きさへ復元します。</p>
+      <p class="step">好きに並べたら <b>今の配置を記憶</b> を 1 回。以後は自動で戻り、<b>配置を復元</b> でいつでも呼び出せます。</p>
     </div>
+    <figure class="fig">
+      <div class="stage"><div class="flow">
+        <div>
+          <div class="scr mess"><i></i><i></i><i></i></div>
+          <p class="scr-label">繋ぎ直した直後</p>
+        </div>
+        <div class="arrow"><em>&rarr;</em>配置を<br>復元</div>
+        <div>
+          <div class="scr"><i></i><i></i><i></i></div>
+          <p class="scr-label">記憶した配置</p>
+        </div>
+      </div></div>
+      <figcaption>ウィンドウの位置と大きさを記憶し、モニタを繋ぎ直したときに戻します。よく使う並べ方はパターンとして呼び出せます。</figcaption>
+    </figure>
   </div>
 </div></section>
 
 <section><div class="wrap">
   <h2>こんなときに</h2>
-  <ul>
-    <li>外部タッチパネルを縦置きにしたら、タッチした場所と違うところが反応する</li>
-    <li>指を動かした向きと逆にカーソルが動く</li>
-    <li>タッチした入力が内蔵ディスプレイに届いてしまう</li>
-    <li>モニタを繋ぎ直すたびに、ウィンドウの配置がばらばらになる</li>
-  </ul>
+  <div class="features">
+    <div class="feature">
+      <h3>触った場所と違うところが反応する</h3>
+      <p>外部タッチパネルを縦置きにしたときに、いちばん多い症状です。</p>
+    </div>
+    <div class="feature">
+      <h3>指と逆にカーソルが動く</h3>
+      <p>上に動かすと下へ、右に動かすと左へ。パネルの向きが学習されていない状態です。</p>
+    </div>
+    <div class="feature">
+      <h3>タッチが内蔵ディスプレイに届く</h3>
+      <p>触ったつもりのない画面が反応します。補正の対象ディスプレイを選ぶと直ります。</p>
+    </div>
+    <div class="feature">
+      <h3>繋ぎ直すたびに配置が崩れる</h3>
+      <p>ウィンドウを並べ直す手間がなくなります。</p>
+    </div>
+  </div>
 </div></section>
 
 <section id="price"><div class="wrap">
   <h2>価格</h2>
   <div class="price">
     <p class="amount">1,980 円 <small>買い切り・税込</small></p>
-    <p>まず <strong>14 日間、無料で全機能</strong>を試せます。気に入ったら一度払うだけで、以後の更新も含めてずっと使えます。月額はありません。</p>
-    <p class="note">購入手続きは販売代行が売主として行います。領収書はそちらから届きます。</p>
+    <div>
+      <p>まず <strong>14 日間、無料で全機能</strong>を試せます。気に入ったら一度払うだけで、以後の更新も含めてずっと使えます。月額はありません。</p>
+      <p class="note">購入手続きは販売代行が売主として行います。領収書はそちらから届きます。</p>
+    </div>
   </div>
   <div class="cta" style="margin-top:1.5rem">
     <button class="button" data-buy hidden>1,980 円で購入する</button>

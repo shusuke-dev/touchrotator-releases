@@ -13,50 +13,139 @@
 </div></header>
 
 <div class="hero"><div class="wrap">
-  <h1>Make a portrait touch panel<br>work properly on a Mac.</h1>
-  <p class="tagline">Turn an external touch panel 90&deg; and your finger no longer lands where the pointer goes. TouchRotator corrects the coordinates &mdash; and puts display settings and window layouts in the menu bar while it is there.</p>
-  <div class="cta">
-    <a class="button" href="https://github.com/shusuke-dev/touchrotator-releases/releases/latest">Try it free for 14 days</a>
-    <a class="button ghost" href="#price">See the price</a>
+  <div>
+    <h1>Make a portrait touch panel work properly on a Mac.</h1>
+    <p class="tagline">Turn an external touch panel 90&deg; and your finger no longer lands where the pointer goes. TouchRotator corrects the coordinates &mdash; and puts display settings and window layouts in the menu bar while it is there.</p>
+    <div class="cta">
+      <a class="button" href="https://github.com/shusuke-dev/touchrotator-releases/releases/latest">Try it free for 14 days</a>
+      <a class="button ghost" href="#price">See the price</a>
+    </div>
+    <p class="note">macOS 13 or later &middot; Signed with an Apple Developer ID and notarized by Apple</p>
   </div>
-  <p class="note">macOS 13 or later &middot; Signed with an Apple Developer ID and notarized by Apple</p>
-  <img class="shot" src="../screenshot-en.png" alt="TouchRotator settings window" width="590" height="544">
+  <figure class="shot-figure">
+    <img class="shot" src="../screenshot-en.png" alt="The TouchRotator settings window, Touch pane" width="590" height="544">
+    <figcaption>The settings window, Touch pane. The list on the left switches between <strong>General / Touch / Displays / Window layout / How to use / Permissions / About</strong>. No Terminal, no commands.</figcaption>
+  </figure>
 </div></div>
 
 <section><div class="wrap">
   <h2>Three things it does</h2>
-  <div class="features">
-    <div class="feature">
-      <h3>Touch correction</h3>
-      <p>Corrects the coordinates of a panel you have turned on its side. It reads the panel's own USB signal, so your trackpad and mouse are untouched.</p>
+
+  <div class="showcase">
+    <div class="showcase-text">
+      <h3>1. Touch correction &mdash; the pointer lands where your finger did</h3>
+      <p>Turn the panel 90&deg; and macOS still receives its coordinates in the old orientation. That is why the pointer jumps sideways, or runs the opposite way to your finger. TouchRotator reads the panel's own USB signal and corrects the coordinates there, so your trackpad and mouse behave exactly as before.</p>
+      <p class="step">Settings &rarr; Touch: choose the <b>display to correct</b> and run <b>detect by tapping</b> once. After that, <b>⌥⌘R</b> turns it on and off.</p>
     </div>
-    <div class="feature">
-      <h3>Display settings</h3>
-      <p>Resolution, brightness, mirroring and rotation, one click from the menu bar. No trip to System Settings.</p>
+    <figure class="fig">
+      <div class="stage"><div class="compare">
+        <div class="case bad">
+          <div class="panel">
+            <span class="touch"></span>
+            <span class="offset"><span>off by this much</span></span>
+            <span class="pointer"></span>
+          </div>
+          <b>✗ Without correction</b>
+        </div>
+        <div class="case good">
+          <div class="panel">
+            <span class="touch"></span>
+            <span class="pointer"></span>
+          </div>
+          <b>✓ TouchRotator</b>
+        </div>
+      </div></div>
+      <figcaption>The same spot touched on a panel standing on its side. Without correction the pointer sits away from your finger; with it, the pointer is under your finger.</figcaption>
+    </figure>
+  </div>
+
+  <div class="showcase flip">
+    <div class="showcase-text">
+      <h3>2. Display settings &mdash; one click, without opening System Settings</h3>
+      <p>Resolution, brightness, mirroring and rotation, from the menu bar popup. One card per display, as many as you have plugged in.</p>
+      <p class="step">Click the menu bar icon &rarr; press a display's name to open its card.</p>
     </div>
-    <div class="feature">
-      <h3>Window layout</h3>
-      <p>Remembers where your windows were and puts them back when you plug the monitors in again.</p>
+    <figure class="fig">
+      <div class="stage mock">
+        <div class="mock-bar"><span class="spacer"></span><img class="glyph" src="../appicon.png" alt=""><span>100%</span><span>9:41</span></div>
+        <div class="pop">
+          <div class="pop-head">
+            <img class="pop-icon" src="../appicon.png" alt="" width="32" height="32">
+            <span>
+              <b>TouchRotator</b>
+              <small><span class="live">●</span> Correction is on</small>
+            </span>
+            <span class="sw"></span>
+          </div>
+          <div class="pop-card">
+            <div class="pop-row"><span>External display</span><span class="dim push">1920 &times; 1080</span></div>
+            <div class="pop-row"><span class="dim">Brightness</span><span class="bar"><i style="width:62%"></i></span><span class="dim">62%</span></div>
+            <div class="seg"><span>0&deg;</span><span class="on">90&deg;</span><span>180&deg;</span><span>270&deg;</span></div>
+          </div>
+          <div class="pop-card">
+            <div class="pop-label">Window layout</div>
+            <div class="pop-btn">Restore layout</div>
+            <div class="pop-link">Remember this layout</div>
+          </div>
+        </div>
+      </div>
+      <figcaption>The menu bar popup (a drawing). The switch at the top turns correction on and off; the cards below are your displays and your window layout.</figcaption>
+    </figure>
+  </div>
+
+  <div class="showcase">
+    <div class="showcase-text">
+      <h3>3. Window layout &mdash; plug the monitor back in, get your desk back</h3>
+      <p>Unplug a monitor and the windows that were on it are herded onto the built-in display; plugging it back in does not bring them home. TouchRotator remembers where they were and puts them back at the same position and size.</p>
+      <p class="step">Arrange things how you like them, then press <b>Remember this layout</b> once. From then on it happens by itself, and <b>Restore layout</b> brings it back any time.</p>
     </div>
+    <figure class="fig">
+      <div class="stage"><div class="flow">
+        <div>
+          <div class="scr mess"><i></i><i></i><i></i></div>
+          <p class="scr-label">Just plugged back in</p>
+        </div>
+        <div class="arrow"><em>&rarr;</em>Restore<br>layout</div>
+        <div>
+          <div class="scr"><i></i><i></i><i></i></div>
+          <p class="scr-label">The layout you saved</p>
+        </div>
+      </div></div>
+      <figcaption>Remembers each window's position and size and puts them back when the monitors return. Arrangements you use often can be saved as patterns.</figcaption>
+    </figure>
   </div>
 </div></section>
 
 <section><div class="wrap">
   <h2>If any of this sounds familiar</h2>
-  <ul>
-    <li>You stood an external touch panel up, and now taps land somewhere else</li>
-    <li>The pointer moves the opposite way to your finger</li>
-    <li>Touches arrive on the built-in display instead of the panel</li>
-    <li>Every reconnect scatters your windows</li>
-  </ul>
+  <div class="features">
+    <div class="feature">
+      <h3>Taps land somewhere else</h3>
+      <p>The commonest symptom once an external touch panel is standing on its side.</p>
+    </div>
+    <div class="feature">
+      <h3>The pointer moves the wrong way</h3>
+      <p>Up goes down, right goes left. The panel's orientation has not been learned yet.</p>
+    </div>
+    <div class="feature">
+      <h3>Touches arrive on the built-in display</h3>
+      <p>A screen you never touched responds. Choosing the display to correct settles it.</p>
+    </div>
+    <div class="feature">
+      <h3>Every reconnect scatters your windows</h3>
+      <p>No more dragging everything back into place.</p>
+    </div>
+  </div>
 </div></section>
 
 <section id="price"><div class="wrap">
   <h2>Price</h2>
   <div class="price">
     <p class="amount">JPY 1,980 <small>one-time, tax included</small></p>
-    <p><strong>Every feature is free for 14 days.</strong> If you keep it, you pay once &mdash; updates included, no subscription.</p>
-    <p class="note">Purchases are processed by our merchant of record, who is the seller of record and sends your receipt.</p>
+    <div>
+      <p><strong>Every feature is free for 14 days.</strong> If you keep it, you pay once &mdash; updates included, no subscription.</p>
+      <p class="note">Purchases are processed by our merchant of record, who is the seller of record and sends your receipt.</p>
+    </div>
   </div>
   <div class="cta" style="margin-top:1.5rem">
     <button class="button" data-buy hidden>Buy for JPY 1,980</button>

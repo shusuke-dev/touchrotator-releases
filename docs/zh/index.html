@@ -13,50 +13,139 @@
 </div></header>
 
 <div class="hero"><div class="wrap">
-  <h1>让竖置的触摸屏<br>在 Mac 上正常工作。</h1>
-  <p class="tagline">把外接触摸屏旋转 90&deg; 后，手指触碰的位置与指针的位置就会错开。TouchRotator 负责校正坐标，同时把显示器设置与窗口布局放进菜单栏。</p>
-  <div class="cta">
-    <a class="button" href="https://github.com/shusuke-dev/touchrotator-releases/releases/latest">免费试用 14 天</a>
-    <a class="button ghost" href="#price">查看价格</a>
+  <div>
+    <h1>让竖置的触摸屏<br>在 Mac 上正常工作。</h1>
+    <p class="tagline">把外接触摸屏旋转 90&deg; 后，手指触碰的位置与指针的位置就会错开。TouchRotator 负责校正坐标，同时把显示器设置与窗口布局放进菜单栏。</p>
+    <div class="cta">
+      <a class="button" href="https://github.com/shusuke-dev/touchrotator-releases/releases/latest">免费试用 14 天</a>
+      <a class="button ghost" href="#price">查看价格</a>
+    </div>
+    <p class="note">macOS 13 或更高版本 &middot; 已使用 Apple Developer ID 签名并通过 Apple 公证</p>
   </div>
-  <p class="note">macOS 13 或更高版本 &middot; 已使用 Apple Developer ID 签名并通过 Apple 公证</p>
-  <img class="shot" src="../screenshot-zh.png" alt="TouchRotator 设置窗口" width="590" height="544">
+  <figure class="shot-figure">
+    <img class="shot" src="../screenshot-zh.png" alt="TouchRotator 设置窗口的「触摸校正」" width="590" height="544">
+    <figcaption>设置窗口的「触摸校正」。左侧列表可切换<strong>常规 / 触摸校正 / 显示器 / 窗口布局 / 使用方法 / 权限 / 关于</strong>。无需终端，也无需命令。</figcaption>
+  </figure>
 </div></div>
 
 <section><div class="wrap">
   <h2>三项功能</h2>
-  <div class="features">
-    <div class="feature">
-      <h3>触摸校正</h3>
-      <p>校正竖置面板的坐标。直接读取面板的 USB 信号，因此不会影响触控板和鼠标的操作。</p>
+
+  <div class="showcase">
+    <div class="showcase-text">
+      <h3>1. 触摸校正 —— 触碰的位置，就是响应的位置</h3>
+      <p>把面板旋转 90&deg; 后，macOS 仍按旋转前的方向接收坐标。指针会横向跳开，或与手指的方向相反，原因就在这里。TouchRotator 直接读取面板的 USB 信号来校正坐标，因此不影响触控板与鼠标的操作。</p>
+      <p class="step">设置 &rarr; 触摸校正，选择<b>目标显示器</b>，执行一次<b>点按自动检测</b>。之后用 <b>⌥⌘R</b> 开关。</p>
     </div>
-    <div class="feature">
-      <h3>显示器设置</h3>
-      <p>分辨率、亮度、镜像与旋转，在菜单栏中一键完成，无需打开系统设置。</p>
+    <figure class="fig">
+      <div class="stage"><div class="compare">
+        <div class="case bad">
+          <div class="panel">
+            <span class="touch"></span>
+            <span class="offset"><span>偏移</span></span>
+            <span class="pointer"></span>
+          </div>
+          <b>✗ 未校正</b>
+        </div>
+        <div class="case good">
+          <div class="panel">
+            <span class="touch"></span>
+            <span class="pointer"></span>
+          </div>
+          <b>✓ TouchRotator</b>
+        </div>
+      </div></div>
+      <figcaption>在竖置的面板上触碰同一位置。未校正时指针与手指分离，校正后指针就在手指下方。</figcaption>
+    </figure>
+  </div>
+
+  <div class="showcase flip">
+    <div class="showcase-text">
+      <h3>2. 显示器设置 —— 不打开系统设置，一次点击完成</h3>
+      <p>分辨率、亮度、镜像、旋转，都能在菜单栏的弹窗里更改。每台显示器一张卡片，接几台就有几张。</p>
+      <p class="step">点击菜单栏图标 &rarr; 点显示器名称即可展开卡片。</p>
     </div>
-    <div class="feature">
-      <h3>窗口布局</h3>
-      <p>记住窗口的位置与大小，重新连接显示器后恢复原状。</p>
+    <figure class="fig">
+      <div class="stage mock">
+        <div class="mock-bar"><span class="spacer"></span><img class="glyph" src="../appicon.png" alt=""><span>100%</span><span>9:41</span></div>
+        <div class="pop">
+          <div class="pop-head">
+            <img class="pop-icon" src="../appicon.png" alt="" width="32" height="32">
+            <span>
+              <b>TouchRotator</b>
+              <small><span class="live">●</span> 校正已开启</small>
+            </span>
+            <span class="sw"></span>
+          </div>
+          <div class="pop-card">
+            <div class="pop-row"><span>外接显示器</span><span class="dim push">1920 &times; 1080</span></div>
+            <div class="pop-row"><span class="dim">亮度</span><span class="bar"><i style="width:62%"></i></span><span class="dim">62%</span></div>
+            <div class="seg"><span>0&deg;</span><span class="on">90&deg;</span><span>180&deg;</span><span>270&deg;</span></div>
+          </div>
+          <div class="pop-card">
+            <div class="pop-label">窗口布局</div>
+            <div class="pop-btn">恢复布局</div>
+            <div class="pop-link">记住当前布局</div>
+          </div>
+        </div>
+      </div>
+      <figcaption>菜单栏弹窗（示意图）。上方的开关控制校正的开 / 关，下方是显示器与窗口布局。</figcaption>
+    </figure>
+  </div>
+
+  <div class="showcase">
+    <div class="showcase-text">
+      <h3>3. 窗口布局 —— 重新接上，也回到原来的位置</h3>
+      <p>拔掉显示器后，原本在上面的窗口会被挤到内建显示器，重新接上也不会回去。TouchRotator 会记住布局，在显示器接回来时把窗口恢复到原来的位置和大小。</p>
+      <p class="step">摆放好之后，点一次<b>记住当前布局</b>。之后会自动恢复，也可以随时用<b>恢复布局</b>调出。</p>
     </div>
+    <figure class="fig">
+      <div class="stage"><div class="flow">
+        <div>
+          <div class="scr mess"><i></i><i></i><i></i></div>
+          <p class="scr-label">刚接回时</p>
+        </div>
+        <div class="arrow"><em>&rarr;</em>恢复<br>布局</div>
+        <div>
+          <div class="scr"><i></i><i></i><i></i></div>
+          <p class="scr-label">记住的布局</p>
+        </div>
+      </div></div>
+      <figcaption>记住每个窗口的位置与大小，在显示器接回来时恢复。常用的排布可以保存为模式随时调用。</figcaption>
+    </figure>
   </div>
 </div></section>
 
 <section><div class="wrap">
   <h2>如果你遇到这些情况</h2>
-  <ul>
-    <li>把外接触摸屏竖起来后，点按的位置与实际反应的位置不一致</li>
-    <li>指针的移动方向与手指相反</li>
-    <li>触摸输入跑到了内建显示器上</li>
-    <li>每次重新连接显示器，窗口位置都乱掉</li>
-  </ul>
+  <div class="features">
+    <div class="feature">
+      <h3>点按的位置与反应的位置不一致</h3>
+      <p>外接触摸屏竖置时最常见的症状。</p>
+    </div>
+    <div class="feature">
+      <h3>指针与手指的方向相反</h3>
+      <p>向上变成向下，向右变成向左。面板的方向尚未被学习。</p>
+    </div>
+    <div class="feature">
+      <h3>触摸落到了内建显示器上</h3>
+      <p>没有碰过的屏幕却有反应。选择校正的目标显示器即可解决。</p>
+    </div>
+    <div class="feature">
+      <h3>每次重新连接，窗口都乱掉</h3>
+      <p>不必再一个个把窗口摆回原处。</p>
+    </div>
+  </div>
 </div></section>
 
 <section id="price"><div class="wrap">
   <h2>价格</h2>
   <div class="price">
     <p class="amount">1,980 日元 <small>一次买断，含税</small></p>
-    <p>先<strong>免费试用 14 天全部功能</strong>。满意后只需支付一次，之后的更新也包含在内，没有月费。</p>
-    <p class="note">购买流程由销售代理（merchant of record）作为卖方处理，收据也由其发送。</p>
+    <div>
+      <p>先<strong>免费试用 14 天全部功能</strong>。满意后只需支付一次，之后的更新也包含在内，没有月费。</p>
+      <p class="note">购买流程由销售代理（merchant of record）作为卖方处理，收据也由其发送。</p>
+    </div>
   </div>
   <div class="cta" style="margin-top:1.5rem">
     <button class="button" data-buy hidden>以 1,980 日元购买</button>
