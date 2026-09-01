@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>ライセンスキー &mdash; TouchRotator</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .key {
+    font-family: var(--mono); font-size: .95rem; word-break: break-all;
+    background: var(--panel); border: 1px solid var(--rule); border-radius: 8px;
+    padding: 1rem 1.1rem; margin: 1rem 0; line-height: 1.6;
+  }
+  .state { min-height: 6rem; }
+  .bad { color: var(--warn); }
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="index.html">TouchRotator</a>
+</div></header>
+
+<section><div class="wrap"><article>
+  <h1 style="font-size:1.8rem" data-t="title">ありがとうございます</h1>
+  <div class="state" id="state"><p data-t="loading">ライセンスキーを用意しています…</p></div>
+  <div id="next" hidden>
+    <h2 data-t="how">使い方</h2>
+    <ol>
+      <li data-t="step1">メニューバーの TouchRotator を開き、下の「設定…」を押す</li>
+      <li data-t="step2">左の「情報」を開く</li>
+      <li data-t="step3">ライセンスキーの欄に、上のキーを貼って「認証」</li>
+    </ol>
+    <p class="note" data-t="keep">このページは閉じても構いません。同じリンクを開けば、同じキーがもう一度出ます。うまくいかないときは <a href="mailto:info@tsubomi.jp">info@tsubomi.jp</a> へ。</p>
+  </div>
+</article></div></section>
+
+<footer><div class="wrap">
+  <nav id="foot"></nav>
+  <p><a href="mailto:info@tsubomi.jp">info@tsubomi.jp</a></p>
+</div></footer>
+
+<script>
+/**
+ * Shows the licence key for the purchase that has just gone through.
+ *
+ * The page itself knows nothing: it hands Paddle's transaction id to the key
+ * service, which asks Paddle whether that transaction was really paid before
+ * parting with anything. Reloading is safe — the same transaction always gets
+ * the same key back, which is also how someone who lost theirs gets it again.
+ */
+const KEY_SERVICE = "https://touchrotator-keys.small-leaf-0ba1.workers.dev";
+
+const TEXT = {
+  ja: {
+    title: "ありがとうございます", loading: "ライセンスキーを用意しています…",
+    how: "使い方",
+    step1: "メニューバーの TouchRotator を開き、下の「設定…」を押す",
+    step2: "左の「情報」を開く",
+    step3: "ライセンスキーの欄に、上のキーを貼って「認証」",
+    keep: "このページは閉じても構いません。同じリンクを開けば、同じキーがもう一度出ます。うまくいかないときは info@tsubomi.jp へ。",
+    yours: "あなたのライセンスキー",
+    noTxn: "購入の情報が見つかりません。決済後の画面から開き直してください。",
+    notPaid: "この購入はまだ完了していません。決済が終わってからもう一度お試しください。",
+    trouble: "キーを取り出せませんでした。お手数ですが info@tsubomi.jp までご連絡ください。すぐにお送りします。",
+    nav: [["", "ホーム"], ["terms.html", "利用規約"], ["privacy.html", "プライバシー"], ["refund.html", "返金"]],
+  },
+  en: {
+    title: "Thank you", loading: "Fetching your licence key…",
+    how: "What to do with it",
+    step1: "Open TouchRotator in the menu bar and press Settings…",
+    step2: "Open About on the left",
+    step3: "Paste the key above into the licence field and press Activate",
+    keep: "You can close this page. Opening the same link shows the same key again. If anything goes wrong, write to info@tsubomi.jp.",
+    yours: "Your licence key",
+    noTxn: "No purchase found. Please open this page from the screen you saw after paying.",
+    notPaid: "This purchase has not completed yet. Please try again once payment goes through.",
+    trouble: "The key could not be fetched. Please write to info@tsubomi.jp and we will send it straight away.",
+    nav: [["", "Home"], ["terms.html", "Terms"], ["privacy.html", "Privacy"], ["refund.html", "Refunds"]],
+  },
+  zh: {
+    title: "感谢您的购买", loading: "正在准备您的许可证密钥…",
+    how: "使用方法",
+    step1: "在菜单栏打开 TouchRotator，点按下方的「设置…」",
+    step2: "打开左侧的「关于」",
+    step3: "把上面的密钥粘贴到许可证栏，然后点按「激活」",
+    keep: "可以关闭本页。打开同一链接会再次显示同一密钥。如有问题请联系 info@tsubomi.jp。",
+    yours: "您的许可证密钥",
+    noTxn: "未找到购买信息。请从付款后的页面重新打开。",
+    notPaid: "该笔购买尚未完成。请在付款完成后重试。",
+    trouble: "无法取得密钥。请联系 info@tsubomi.jp，我们会立即发送。",
+    nav: [["", "首页"], ["terms.html", "使用条款"], ["privacy.html", "隐私政策"], ["refund.html", "退款政策"]],
+  },
+};
+
+const lang = (navigator.language || "ja").toLowerCase().startsWith("zh")
+  ? "zh"
+  : (navigator.language || "ja").toLowerCase().startsWith("ja") ? "ja" : "en";
+const t = TEXT[lang];
+document.documentElement.lang = lang === "zh" ? "zh-Hans" : lang;
+document.querySelectorAll("[data-t]").forEach((node) => {
+  const value = t[node.dataset.t];
+  if (!value) return;
+  if (node.querySelector("a")) return;   // keep the mail link intact
+  node.textContent = value;
+});
+
+// The footer in the reader's own language, pointing at that language's pages.
+const home = lang === "ja" ? "" : lang + "/";
+document.getElementById("foot").innerHTML = t.nav
+  .map(([page, label]) => `<a href="${home}${page || "index.html"}">${label}</a>`)
+  .join("");
+
+const state = document.getElementById("state");
+const say = (message, bad) => {
+  state.innerHTML = "";
+  const p = document.createElement("p");
+  if (bad) p.className = "bad";
+  p.textContent = message;
+  state.appendChild(p);
+};
+
+async function run() {
+  const id = new URLSearchParams(location.search).get("_ptxn");
+  if (!id) return say(t.noTxn, true);
+  if (!KEY_SERVICE) return say(t.trouble, true);
+
+  let answer;
+  try {
+    const response = await fetch(`${KEY_SERVICE}?txn=${encodeURIComponent(id)}`);
+    answer = await response.json();
+    if (response.status === 402) return say(t.notPaid, true);
+    if (!response.ok || !answer.key) return say(t.trouble, true);
+  } catch {
+    return say(t.trouble, true);
+  }
+
+  state.innerHTML = "";
+  const label = document.createElement("p");
+  label.textContent = t.yours;
+  const box = document.createElement("div");
+  box.className = "key";
+  box.textContent = answer.key;
+  state.append(label, box);
+  document.getElementById("next").hidden = false;
+}
+
+run();
+</script>
+</body>
+</html>

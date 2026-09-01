@@ -1,0 +1,103 @@
+/* One stylesheet for every page and every language. */
+:root {
+  --ground: #ffffff;
+  --panel: #f5f7f8;
+  --ink: #14181a;
+  --muted: #5b666b;
+  --rule: #e2e7e9;
+  --accent: #0f6b6b;
+  --accent-ink: #ffffff;
+  --accent-soft: #e4f1f0;
+  --sans: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP",
+          "PingFang SC", "Microsoft YaHei", system-ui, -apple-system, sans-serif;
+  --mono: ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ground: #14181a;
+    --panel: #1c2224;
+    --ink: #e8eded;
+    --muted: #9aa5a8;
+    --rule: #2b3234;
+    --accent: #5fbfba;
+    --accent-ink: #10201f;
+    --accent-soft: #1b2e2e;
+  }
+}
+
+* { box-sizing: border-box; }
+/* `display: inline-block` on .button otherwise wins over the browser's own
+   [hidden] rule, and a button meant to be hidden shows anyway. */
+[hidden] { display: none !important; }
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 46rem; margin: 0 auto; padding: 0 1.25rem; }
+
+/* Header */
+.top {
+  border-bottom: 1px solid var(--rule);
+  padding: 1rem 0;
+  font-size: .9rem;
+}
+.top .wrap { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+.brand { font-weight: 700; text-decoration: none; color: var(--ink); }
+.langs { margin-left: auto; display: flex; gap: .75rem; }
+.langs a { color: var(--muted); text-decoration: none; }
+.langs a[aria-current="true"] { color: var(--ink); font-weight: 700; }
+
+/* Hero */
+.hero { padding: 4rem 0 3rem; border-bottom: 1px solid var(--rule); }
+h1 { font-size: 2.25rem; line-height: 1.35; margin: 0 0 .75rem; text-wrap: balance; }
+.tagline { font-size: 1.1rem; color: var(--muted); margin: 0 0 2rem; }
+.cta { display: flex; gap: .75rem; flex-wrap: wrap; align-items: center; }
+.button {
+  display: inline-block; padding: .7rem 1.4rem; border-radius: 8px;
+  background: var(--accent); color: var(--accent-ink);
+  text-decoration: none; font-weight: 700;
+}
+.button.ghost { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+.note { color: var(--muted); font-size: .85rem; margin: .9rem 0 0; }
+
+img.shot {
+  display: block; max-width: 590px; width: 100%; height: auto; margin: 2.5rem 0 0;
+  border: 1px solid var(--rule); border-radius: 10px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, .08);
+}
+
+section { padding: 3rem 0; border-bottom: 1px solid var(--rule); }
+h2 { font-size: 1.4rem; margin: 0 0 1rem; text-wrap: balance; }
+h3 { font-size: 1rem; margin: 2rem 0 .3rem; }
+p { margin: .8rem 0; }
+ul, ol { padding-left: 1.3rem; margin: .8rem 0; }
+li { margin: .35rem 0; }
+a { color: var(--accent); }
+code { font-family: var(--mono); font-size: .88em; background: var(--panel); padding: .1em .35em; border-radius: 4px; }
+
+.features { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); }
+.feature { background: var(--panel); border-radius: 10px; padding: 1.1rem 1.25rem; }
+.feature h3 { margin: 0 0 .3rem; }
+.feature p { margin: 0; font-size: .92rem; color: var(--muted); }
+
+.price { background: var(--accent-soft); border-radius: 10px; padding: 1.5rem; }
+.price .amount { font-size: 2rem; font-weight: 700; }
+.price .amount small { font-size: 1rem; font-weight: 400; color: var(--muted); }
+
+.scroller { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: .92rem; }
+th, td { text-align: left; padding: .6rem .8rem; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th { color: var(--muted); font-weight: 700; width: 12rem; }
+@media (max-width: 34rem) { th { width: auto; } }
+
+footer { padding: 2.5rem 0 4rem; color: var(--muted); font-size: .85rem; }
+footer nav { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem; }
+footer a { color: var(--muted); }
+
+article h2:first-of-type { margin-top: 0; }
+article section { border: 0; padding: 1.5rem 0 0; }
