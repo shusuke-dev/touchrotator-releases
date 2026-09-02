@@ -200,7 +200,7 @@ h2::before {
    belongs to the feature it describes. */
 .lede { margin: 0 0 2.5rem; color: var(--muted); font-size: 1rem; }
 h3 { font-size: 1rem; margin: 2rem 0 .3rem; }
-p { margin: .8rem 0; }
+p { margin: 1.15rem 0; }
 ul, ol { padding-left: 1.3rem; margin: .8rem 0; }
 li { margin: .35rem 0; }
 a { color: var(--accent); text-underline-offset: 2px; }
@@ -237,9 +237,9 @@ code { font-family: var(--mono); font-size: .88em; background: var(--panel); pad
   font-size: .8rem; font-weight: 700; line-height: 1.6rem; text-align: center;
   align-self: flex-start; transform: translateY(.15rem);
 }
-.showcase-text p { margin: .5rem 0 0; color: var(--muted); font-size: .95rem; }
+.showcase-text p { margin: 1rem 0 0; color: var(--muted); font-size: .95rem; }
 .showcase-text .step {
-  margin-top: 1rem; padding-left: .9rem; border-left: 2px solid var(--accent-soft);
+  margin-top: 1.4rem; padding-left: .9rem; border-left: 2px solid var(--accent-soft);
   font-size: .85rem; color: var(--muted);
 }
 .showcase-text .step b { color: var(--ink); }
@@ -311,12 +311,20 @@ code { font-family: var(--mono); font-size: .88em; background: var(--panel); pad
    pair rather than a sentence. */
 .gestures div {
   display: flex; gap: 1rem; align-items: baseline;
-  padding: .5rem 0; border-bottom: 1px solid var(--rule); font-size: .9rem;
+  padding: .6rem 0; border-bottom: 1px solid var(--rule); font-size: .9rem;
 }
 .gestures div:last-child { border-bottom: 0; }
 .gestures b { flex: none; width: 10rem; }
 .gestures span { color: var(--muted); }
-@media (max-width: 26rem) { .gestures div { display: block; } .gestures b { width: auto; } }
+/* On a phone the two columns do not fit, so the result moves to its own
+   line. Both halves have to be blocks and the result needs its arrow:
+   left inline they ran together and read as one word — 「タップクリック」. */
+@media (max-width: 32rem) {
+  .gestures div { display: block; }
+  .gestures b { display: block; width: auto; }
+  .gestures span { display: block; }
+  .gestures span::before { content: "→ "; color: var(--accent); font-weight: 700; }
+}
 
 /* The menu bar popup. Same rows the app puts there. */
 .mock { padding: 1rem; }
@@ -470,7 +478,7 @@ article section { border: 0; padding: 1.5rem 0 0; }
 
 /* Before and after, in two lines, so a visitor who reads nothing else still
    knows what each feature changes. */
-.ba { display: grid; gap: .4rem; margin: .9rem 0 0; }
+.ba { display: grid; gap: .45rem; margin: 1.1rem 0 0; }
 .ba div {
   display: flex; gap: .55rem; align-items: baseline;
   font-size: .88rem; line-height: 1.6;
