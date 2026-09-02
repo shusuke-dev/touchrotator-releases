@@ -1,14 +1,23 @@
 /* One stylesheet for every page and every language. */
 :root {
   --ground: #ffffff;
-  --panel: #f5f7f8;
+  /* The band behind every other section. Biased towards the accent and dark
+     enough to see: at #f5f7f8 the alternating sections were indistinguishable
+     from the white ones, so the page read as one unbroken sheet. */
+  --panel: #e9f0f1;
   --ink: #14181a;
   --muted: #5b666b;
-  --rule: #e2e7e9;
+  --rule: #dbe3e5;
+  /* For the lines that have to carry a boundary on their own — between
+     sections, and around a card that sits on the same colour as its ground. */
+  --rule-strong: #c3d0d3;
   --accent: #0f6b6b;
   --accent-ink: #ffffff;
-  --accent-soft: #e4f1f0;
+  --accent-soft: #d9ecea;
   --warn: #b23f3a;
+  /* The wrong half of every before-and-after. Warm against the accent, so
+     the problem and the fix are two colours rather than two glyphs. */
+  --warn-soft: #fbe9e7;
   --glass: rgba(255, 255, 255, .72);
   /* On a Mac this is SF for the Latin letters and Hiragino for the
      Japanese, which is what every other app on the machine looks like. */
@@ -183,9 +192,11 @@ img.shot { display: block; width: 100%; height: auto; margin: 0; }
 /* Sections. Every other one sits on a band of colour, so where one topic
    ends and the next begins is visible from across the room rather than
    only on the hairline between them. */
-section { padding: 3.5rem 0; border-bottom: 1px solid var(--rule); }
+section { padding: 3.5rem 0; border-bottom: 1px solid var(--rule-strong); }
 @media (min-width: 60rem) { section { padding: 5rem 0; } }
-body > section:nth-of-type(even) { background: var(--panel); border-bottom-color: transparent; }
+/* Odd rather than even: the first section is the long one, and its four
+   features need a band behind them for the cards to sit on. */
+body > section:nth-of-type(odd) { background: var(--panel); border-bottom-color: transparent; }
 /* A short accent rule over each heading — the mark that says a new section
    starts here. */
 h2 {
@@ -209,23 +220,30 @@ code { font-family: var(--mono); font-size: .88em; background: var(--panel); pad
 .features { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); }
 /* Two by two rather than three and a gap. */
 @media (min-width: 56rem) { .features { grid-template-columns: 1fr 1fr; max-width: 56rem; } }
+/* Tinted, because this section sits on the white band: a white card on a
+   white ground is a rectangle of hairline and nothing else. */
 .feature {
-  background: var(--ground); border: 1px solid var(--rule); border-radius: 12px;
-  padding: 1.1rem 1.25rem; box-shadow: var(--shadow-soft);
+  background: var(--panel); border: 1px solid var(--rule); border-radius: 12px;
+  padding: 1.1rem 1.25rem;
   transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
 }
-.feature:hover { transform: translateY(-2px); box-shadow: var(--shadow); border-color: var(--accent-soft); }
+.feature:hover { transform: translateY(-2px); box-shadow: var(--shadow); border-color: var(--accent); }
 .feature h3 { margin: 0 0 .3rem; }
 .feature p { margin: 0; font-size: .92rem; color: var(--muted); }
 
 /* A feature and the picture of it, side by side; every other one flipped so
    the page alternates instead of marching down one edge. */
-.showcase { display: grid; gap: 1.75rem; align-items: start; }
-/* One rule between features. Four of them ran together as a single wall of
-   text without it. */
-.showcase + .showcase {
-  margin-top: 3.5rem; padding-top: 3.5rem; border-top: 1px solid var(--rule);
+/* Each one is a card. A rule and a stretch of white between them was not
+   enough — four features read as one continuous column of text, with no
+   sign of where one ended and the next began. An edge all the way round
+   says it plainly. */
+.showcase {
+  display: grid; gap: 1.75rem; align-items: start;
+  background: var(--ground); border: 1px solid var(--rule);
+  border-radius: 16px; padding: 1.6rem; box-shadow: var(--shadow-soft);
 }
+@media (min-width: 56rem) { .showcase { padding: 2.25rem; } }
+.showcase + .showcase { margin-top: 1.5rem; }
 .showcase-text { max-width: var(--measure); }
 .showcase-text h3 {
   display: flex; align-items: baseline; gap: .6rem;
@@ -311,9 +329,11 @@ code { font-family: var(--mono); font-size: .88em; background: var(--panel); pad
    pair rather than a sentence. */
 .gestures div {
   display: flex; gap: 1rem; align-items: baseline;
-  padding: .6rem 0; border-bottom: 1px solid var(--rule); font-size: .9rem;
+  padding: .6rem .7rem; border-radius: 6px; font-size: .9rem;
 }
-.gestures div:last-child { border-bottom: 0; }
+/* Banded rather than ruled. Six hairlines in a row read as a form to fill
+   in; the bands read as a list of pairs, which is what this is. */
+.gestures div:nth-child(odd) { background: var(--ground); }
 .gestures b { flex: none; width: 10rem; }
 .gestures span { color: var(--muted); }
 /* On a phone the two columns do not fit, so the result moves to its own
@@ -501,16 +521,21 @@ article section { border: 0; padding: 1.5rem 0 0; }
 
 /* Before and after, in two lines, so a visitor who reads nothing else still
    knows what each feature changes. */
-.ba { display: grid; gap: .45rem; margin: 1.1rem 0 0; }
+/* Two filled rows rather than two lines of text with a mark in front. The
+   colour is the message: the warm one is what the machine does on its own,
+   the accent one is what changes. A reader who scans and never stops still
+   gets the whole page from these. */
+.ba { display: grid; gap: .4rem; margin: 1.1rem 0 0; }
 .ba div {
   display: flex; gap: .55rem; align-items: baseline;
+  padding: .5rem .8rem; border-radius: 8px;
   font-size: .88rem; line-height: 1.6;
 }
 .ba div::before { flex: none; font-weight: 700; }
-.ba .before { color: var(--muted); }
+.ba .before { background: var(--warn-soft); color: var(--ink); }
 .ba .before::before { content: "✗"; color: var(--warn); }
-.ba .after { color: var(--ink); }
+.ba .after { background: var(--accent-soft); color: var(--ink); }
 .ba .after::before { content: "✓"; color: var(--accent); }
 .ba b { font-weight: 700; margin-right: .35rem; }
-.ba .before b { color: var(--muted); }
+.ba .before b { color: var(--warn); }
 .ba .after b { color: var(--accent); }
