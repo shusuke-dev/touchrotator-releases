@@ -3,39 +3,73 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>TouchRotator &mdash; 縦置きタッチパネルを Mac で正しく動かす</title>
+<title>TouchRotator &mdash; タッチモニターを Mac で使えるようにする</title>
 <link rel="stylesheet" href="style.css">
+<link rel="icon" href="appicon.png">
 </head>
 <body>
 <header class="top"><div class="wrap">
-  <a class="brand" href="index.html">TouchRotator</a>
+  <a class="brand" href="index.html"><img src="appicon.png" alt="" width="22" height="22">TouchRotator</a>
+  <nav class="links"><a href="#features">できること</a><a href="#price">価格</a><a href="#specs">動作環境</a></nav>
   <nav class="langs"><a href="index.html" aria-current="true">日本語</a><a href="en/index.html">English</a><a href="zh/index.html">简体中文</a></nav>
 </div></header>
 
 <div class="hero"><div class="wrap">
   <div>
-    <h1>縦に置いたタッチパネルを、<br>Mac で正しく動かす。</h1>
-    <p class="tagline">90&deg; 回した外部タッチパネルは、指で触った場所とカーソルの場所がずれます。TouchRotator はその座標を補正します。モニタの設定とウィンドウの配置も、メニューバーから。</p>
+    <p class="eyebrow"><i></i>メニューバー常駐 &middot; macOS 13 以降</p>
+    <h1>タッチモニターを、<br>Mac で使えるようにする。</h1>
+    <p class="tagline">macOS はタッチモニターをマウスとしてしか扱いません。触ればクリックはできても、スクロールも右クリックもできず、触った場所と違うところが反応します。TouchRotator はパネルの USB 信号を直接読み取り、iPhone のような操作に変えます。</p>
     <div class="cta">
       <a class="button" href="https://github.com/shusuke-dev/touchrotator-releases/releases/latest">14 日間無料でためす</a>
       <a class="button ghost" href="#price">価格を見る</a>
     </div>
-    <p class="note">macOS 13 以降 &middot; Apple Developer ID で署名し、Apple の公証を受けています</p>
+    <p class="note">Apple Developer ID で署名し、Apple の公証を受けています &middot; 買い切り 1,980 円</p>
   </div>
   <figure class="shot-figure">
-    <img class="shot" src="screenshot-ja.png" alt="TouchRotator の設定画面（タッチ補正）" width="590" height="544">
+    <div class="macwin">
+      <div class="macwin-bar"><i></i><i></i><i></i><span>TouchRotator</span></div>
+      <img class="shot" src="screenshot-ja.png" alt="TouchRotator の設定画面（タッチ補正）" width="590" height="544">
+    </div>
     <figcaption>設定画面の「タッチ補正」。左のリストで<strong>一般 / タッチ補正 / モニター設定 / ウィンドウ配置 / 使い方 / 権限 / 情報</strong>を切り替えます。ターミナルもコマンドも使いません。</figcaption>
   </figure>
 </div></div>
 
-<section><div class="wrap">
-  <h2>3 つの機能</h2>
+<section id="features"><div class="wrap">
+  <h2>できること</h2>
+  <p>タッチモニターを足すということは、画面が 2 枚以上あるということです。そこで起きることは、タッチが思ったとおりに動かないことだけではありません。どの画面に何を映すか、繋ぎ直すたびにウィンドウがどこへ行くか。TouchRotator は、その一式を 1 つのアプリにまとめてメニューバーに置きます。</p>
 
-  <div class="showcase">
+  <div class="showcase reveal">
     <div class="showcase-text">
-      <h3>1. タッチ補正 &mdash; 触った場所が、触った場所として届く</h3>
-      <p>パネルを 90&deg; 回すと、macOS は回す前の向きのまま座標を受け取ります。指の動きに対してカーソルが横に飛んだり、逆向きに動いたりするのはそのためです。TouchRotator はパネルの USB 信号を直接読み取って座標を補正するので、トラックパッドやマウスの操作には影響しません。</p>
-      <p class="step">設定 &rarr; タッチ補正で<b>対象ディスプレイ</b>を選び、<b>タップで自動検出</b>を 1 回。あとは <b>⌥⌘R</b> で ON / OFF。</p>
+      <h3><span class="num">1</span>タッチが「使える」ようになる</h3>
+      <div class="ba">
+        <div class="before"><b>素のまま</b>クリックしかできない</div>
+        <div class="after"><b>TouchRotator</b>タップ・スクロール・右クリック・ドラッグ</div>
+      </div>
+      <p>パネルの USB 信号（HID デジタイザ）を直接読み取り、指の動きをそのまま操作に変えます。可能な場合はパネルを排他的に取得するので、macOS 側の「タッチをどの画面のマウスにするか」という割り当てに左右されません。トラックパッドやマウスは、これまでどおりです。</p>
+      <p class="step">表示領域とのわずかなずれは、<b>4 点キャリブレーション</b>で合わせられます。</p>
+    </div>
+    <figure class="fig">
+      <div class="stage"><div class="gestures">
+        <div><b>タップ</b><span>クリック</span></div>
+        <div><b>スワイプ</b><span>スクロール（慣性つき）</span></div>
+        <div><b>2 本指スワイプ</b><span>スクロール（2 本指を報告する機種のみ）</span></div>
+        <div><b>長押し</b><span>右クリック</span></div>
+        <div><b>長押ししてから動かす</b><span>ドラッグ</span></div>
+        <div><b>手のひらが当たる</b><span>無視（しきい値は調整できます）</span></div>
+      </div></div>
+      <figcaption>macOS が用意していないのはこの部分です。スクロールも右クリックも、素のままでは指ではできません。</figcaption>
+    </figure>
+  </div>
+
+  <div class="showcase flip reveal">
+    <div class="showcase-text">
+      <h3><span class="num">2</span>縦に置いても、触った場所が合う</h3>
+      <div class="ba">
+        <div class="before"><b>素のまま</b>指とカーソルが離れる・逆に動く</div>
+        <div class="after"><b>TouchRotator</b>指の下にカーソルが来る</div>
+      </div>
+      <p>パネルを 90&deg; 回すと、macOS は回す前の向きのまま座標を受け取ります。TouchRotator は読み取った座標を回してから渡すので、縦置きでも触った場所にカーソルが来ます。回転は macOS のディスプレイ設定に自動で追従します。</p>
+      <p class="step">横置きのまま使うなら、この設定は要りません。<b>⌥⌘R</b> でいつでも ON / OFF。</p>
     </div>
     <figure class="fig">
       <div class="stage"><div class="compare">
@@ -59,11 +93,15 @@
     </figure>
   </div>
 
-  <div class="showcase flip">
+  <div class="showcase reveal">
     <div class="showcase-text">
-      <h3>2. モニタ設定 &mdash; システム設定を開かずに 1 クリック</h3>
-      <p>解像度・明るさ・ミラーリング・回転を、メニューバーのポップアップから変えられます。ディスプレイごとにカードが 1 枚並び、繋いでいる台数だけ増えます。</p>
-      <p class="step">メニューバーのアイコンをクリック &rarr; ディスプレイ名を押してカードを開く。</p>
+      <h3><span class="num">3</span>画面が増えたぶんの設定を、1 クリックで</h3>
+      <div class="ba">
+        <div class="before"><b>素のまま</b>システム設定を開いて、画面を選んで…</div>
+        <div class="after"><b>TouchRotator</b>メニューバーから 1 クリック</div>
+      </div>
+      <p>解像度・明るさ・ミラーリング・回転を、メニューバーのポップアップから。ディスプレイごとにカードが 1 枚並び、繋いでいる台数だけ増えます。画面の並び順も、設定 → モニター設定でドラッグして変えられます。</p>
+      <p class="step">ディスプレイ名を押すと、そのカードが開きます。</p>
     </div>
     <figure class="fig">
       <div class="stage mock">
@@ -93,25 +131,35 @@
     </figure>
   </div>
 
-  <div class="showcase">
+  <div class="showcase flip reveal">
     <div class="showcase-text">
-      <h3>3. ウィンドウ配置 &mdash; 繋ぎ直しても、元の場所に戻る</h3>
-      <p>モニタを外すと、開いていたウィンドウは内蔵ディスプレイに寄せられ、繋ぎ直しても戻りません。TouchRotator は配置を記憶しておき、モニタが戻ったときに元の位置と大きさへ復元します。</p>
+      <h3><span class="num">4</span>繋ぎ直しても、ウィンドウが元の場所に戻る</h3>
+      <div class="ba">
+        <div class="before"><b>素のまま</b>外すと内蔵ディスプレイに寄せられたまま</div>
+        <div class="after"><b>TouchRotator</b>元の画面へ、元の大きさで戻る</div>
+      </div>
+      <p>モニタを外すと、開いていたウィンドウは内蔵ディスプレイへ押し込まれ、繋ぎ直しても戻りません。画面が 2 枚以上あれば毎日のように起きることです。TouchRotator は配置を記憶しておき、モニタが戻ったときに元の位置と大きさへ復元します。</p>
       <p class="step">好きに並べたら <b>今の配置を記憶</b> を 1 回。以後は自動で戻り、<b>配置を復元</b> でいつでも呼び出せます。</p>
     </div>
     <figure class="fig">
-      <div class="stage"><div class="flow">
-        <div>
-          <div class="scr mess"><i></i><i></i><i></i></div>
-          <p class="scr-label">繋ぎ直した直後</p>
+      <div class="stage desks">
+        <div class="desk">
+          <p class="desk-label"><b>モニタを外すと</b>ウィンドウは内蔵ディスプレイへ押し込まれる</p>
+          <div class="rig">
+            <div class="mon off"><span class="screen"></span></div>
+            <div class="lap"><span class="screen pile"><i></i><i></i><i></i></span></div>
+          </div>
         </div>
-        <div class="arrow"><em>&rarr;</em>配置を<br>復元</div>
-        <div>
-          <div class="scr"><i></i><i></i><i></i></div>
-          <p class="scr-label">記憶した配置</p>
+        <p class="desk-arrow"><em>&darr;</em> 繋ぎ直すと自動で</p>
+        <div class="desk after">
+          <p class="desk-label"><b>配置を復元</b>元の画面へ、元の大きさで</p>
+          <div class="rig">
+            <div class="mon"><span class="screen"><i></i><i></i></span></div>
+            <div class="lap"><span class="screen"><i></i></span></div>
+          </div>
         </div>
-      </div></div>
-      <figcaption>ウィンドウの位置と大きさを記憶し、モニタを繋ぎ直したときに戻します。よく使う並べ方はパターンとして呼び出せます。</figcaption>
+      </div>
+      <figcaption>左が外部モニタ、右が Mac 本体の画面です。よく使う並べ方はパターンとして呼び出せます。</figcaption>
     </figure>
   </div>
 </div></section>
@@ -119,19 +167,19 @@
 <section><div class="wrap">
   <h2>こんなときに</h2>
   <div class="features">
-    <div class="feature">
-      <h3>触った場所と違うところが反応する</h3>
-      <p>外部タッチパネルを縦置きにしたときに、いちばん多い症状です。</p>
+    <div class="feature reveal">
+      <h3>スクロールも右クリックもできない</h3>
+      <p>Mac に繋いだタッチモニターは、素のままではクリックしかできません。</p>
     </div>
-    <div class="feature">
+    <div class="feature reveal">
+      <h3>触った場所と違うところが反応する</h3>
+      <p>タッチが別の画面に届いていたり、縦置きで座標がずれていたりします。</p>
+    </div>
+    <div class="feature reveal">
       <h3>指と逆にカーソルが動く</h3>
       <p>上に動かすと下へ、右に動かすと左へ。パネルの向きが学習されていない状態です。</p>
     </div>
-    <div class="feature">
-      <h3>タッチが内蔵ディスプレイに届く</h3>
-      <p>触ったつもりのない画面が反応します。補正の対象ディスプレイを選ぶと直ります。</p>
-    </div>
-    <div class="feature">
+    <div class="feature reveal">
       <h3>繋ぎ直すたびに配置が崩れる</h3>
       <p>ウィンドウを並べ直す手間がなくなります。</p>
     </div>
@@ -140,25 +188,29 @@
 
 <section id="price"><div class="wrap">
   <h2>価格</h2>
-  <div class="price">
+  <div class="price reveal">
     <p class="amount">1,980 円 <small>買い切り・税込</small></p>
-    <div>
-      <p>まず <strong>14 日間、無料で全機能</strong>を試せます。気に入ったら一度払うだけで、以後の更新も含めてずっと使えます。月額はありません。</p>
-      <p class="note">購入手続きは販売代行が売主として行います。領収書はそちらから届きます。</p>
-    </div>
+    <ul class="price-list">
+      <li>まず <strong>14 日間、全機能を無料</strong>でためせます</li>
+      <li>以後の<strong>更新もすべて無料</strong>。月額はありません</li>
+      <li>合わなければ<strong>購入から 14 日以内に全額返金</strong>（理由は不要です）</li>
+      <li>日本語 &middot; English &middot; 简体中文</li>
+    </ul>
   </div>
   <div class="cta" style="margin-top:1.5rem">
     <button class="button" data-buy hidden>1,980 円で購入する</button>
     <a class="button ghost" href="https://github.com/shusuke-dev/touchrotator-releases/releases/latest">まず無料でためす</a>
   </div>
+  <p class="note">購入手続きは販売代行が売主として行います。領収書はそちらから届きます。</p>
   <p class="note" data-not-yet>まもなく販売を開始します。それまでは無料でお使いいただけます。</p>
 </div></section>
 
-<section><div class="wrap">
+<section id="specs"><div class="wrap">
   <h2>動作環境</h2>
-  <div class="scroller"><table>
+  <div class="scroller reveal"><table>
     <tr><th>OS</th><td>macOS 13 (Ventura) 以降</td></tr>
     <tr><th>Mac</th><td>Apple silicon &middot; Intel の両方</td></tr>
+    <tr><th>タッチパネル</th><td>USB 接続の HID デジタイザ。縦置き（90&deg; / 270&deg;）でも横置きでも使えます</td></tr>
     <tr><th>必要な権限</th><td>アクセシビリティ、入力監視。macOS が求めるもので、初回起動時に案内が出ます</td></tr>
     <tr><th>言語</th><td>日本語 &middot; English &middot; 简体中文</td></tr>
     <tr><th>署名</th><td>Apple Developer ID で署名済み、Apple の公証（notarization）済み</td></tr>
@@ -177,5 +229,6 @@
 </div></footer>
 <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
 <script src="buy.js"></script>
+<script src="motion.js" defer></script>
 </body>
 </html>

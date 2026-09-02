@@ -3,39 +3,73 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>TouchRotator &mdash; 让竖置的触摸屏在 Mac 上正常工作</title>
+<title>TouchRotator &mdash; 让触摸屏在 Mac 上真正能用</title>
 <link rel="stylesheet" href="../style.css">
+<link rel="icon" href="../appicon.png">
 </head>
 <body>
 <header class="top"><div class="wrap">
-  <a class="brand" href="index.html">TouchRotator</a>
+  <a class="brand" href="index.html"><img src="../appicon.png" alt="" width="22" height="22">TouchRotator</a>
+  <nav class="links"><a href="#features">能做什么</a><a href="#price">价格</a><a href="#specs">系统要求</a></nav>
   <nav class="langs"><a href="../index.html">日本語</a><a href="../en/index.html">English</a><a href="../zh/index.html" aria-current="true">简体中文</a></nav>
 </div></header>
 
 <div class="hero"><div class="wrap">
   <div>
-    <h1>让竖置的触摸屏<br>在 Mac 上正常工作。</h1>
-    <p class="tagline">把外接触摸屏旋转 90&deg; 后，手指触碰的位置与指针的位置就会错开。TouchRotator 负责校正坐标，同时把显示器设置与窗口布局放进菜单栏。</p>
+    <p class="eyebrow"><i></i>常驻菜单栏 &middot; macOS 13 或更高版本</p>
+    <h1>让触摸屏在 Mac 上<br>真正能用。</h1>
+    <p class="tagline">macOS 只把触摸屏当作鼠标。点按能点，却无法滚动、无法右键，触碰的位置还常常与实际反应的位置不一致。TouchRotator 直接读取面板的 USB 信号，把触摸变成手机上那样的操作。</p>
     <div class="cta">
       <a class="button" href="https://github.com/shusuke-dev/touchrotator-releases/releases/latest">免费试用 14 天</a>
       <a class="button ghost" href="#price">查看价格</a>
     </div>
-    <p class="note">macOS 13 或更高版本 &middot; 已使用 Apple Developer ID 签名并通过 Apple 公证</p>
+    <p class="note">已使用 Apple Developer ID 签名并通过 Apple 公证 &middot; 一次买断 1,980 日元</p>
   </div>
   <figure class="shot-figure">
-    <img class="shot" src="../screenshot-zh.png" alt="TouchRotator 设置窗口的「触摸校正」" width="590" height="544">
+    <div class="macwin">
+      <div class="macwin-bar"><i></i><i></i><i></i><span>TouchRotator</span></div>
+      <img class="shot" src="../screenshot-zh.png" alt="TouchRotator 设置窗口的「触摸校正」" width="590" height="544">
+    </div>
     <figcaption>设置窗口的「触摸校正」。左侧列表可切换<strong>常规 / 触摸校正 / 显示器 / 窗口布局 / 使用方法 / 权限 / 关于</strong>。无需终端，也无需命令。</figcaption>
   </figure>
 </div></div>
 
-<section><div class="wrap">
-  <h2>三项功能</h2>
+<section id="features"><div class="wrap">
+  <h2>能做什么</h2>
+  <p>接一台触摸屏，就意味着你至少有两块屏幕。出问题的不只是触摸：哪块屏显示什么、每次插拔之后窗口跑到哪里去。TouchRotator 把这一整套都放进菜单栏的一个图标里。</p>
 
-  <div class="showcase">
+  <div class="showcase reveal">
     <div class="showcase-text">
-      <h3>1. 触摸校正 —— 触碰的位置，就是响应的位置</h3>
-      <p>把面板旋转 90&deg; 后，macOS 仍按旋转前的方向接收坐标。指针会横向跳开，或与手指的方向相反，原因就在这里。TouchRotator 直接读取面板的 USB 信号来校正坐标，因此不影响触控板与鼠标的操作。</p>
-      <p class="step">设置 &rarr; 触摸校正，选择<b>目标显示器</b>，执行一次<b>点按自动检测</b>。之后用 <b>⌥⌘R</b> 开关。</p>
+      <h3><span class="num">1</span>触摸真正可用</h3>
+      <div class="ba">
+        <div class="before"><b>原样</b>手指只能点击</div>
+        <div class="after"><b>TouchRotator</b>点按、滚动、右键、拖拽</div>
+      </div>
+      <p>直接读取面板的 USB 信号（HID 数字化仪），把手指的动作变成这些操作。条件允许时会以独占方式接管面板，因此不受 macOS「这次触摸算哪块屏的鼠标」这一映射的影响。触控板与鼠标一切照旧。</p>
+      <p class="step">与显示区域之间的细微偏差，可以用<b>四点校准</b>对齐。</p>
+    </div>
+    <figure class="fig">
+      <div class="stage"><div class="gestures">
+        <div><b>点按</b><span>点击</span></div>
+        <div><b>滑动</b><span>滚动（带惯性）</span></div>
+        <div><b>双指滑动</b><span>滚动（仅限会报告双指的机型）</span></div>
+        <div><b>长按</b><span>右键</span></div>
+        <div><b>长按后移动</b><span>拖拽</span></div>
+        <div><b>手掌碰到屏幕</b><span>忽略（阈值可自行调整）</span></div>
+      </div></div>
+      <figcaption>这正是 macOS 没有提供的部分。原样接上时，手指既不能滚动，也不能右键。</figcaption>
+    </figure>
+  </div>
+
+  <div class="showcase flip reveal">
+    <div class="showcase-text">
+      <h3><span class="num">2</span>竖着放，触碰的位置也对得上</h3>
+      <div class="ba">
+        <div class="before"><b>原样</b>指针与手指错开，或方向相反</div>
+        <div class="after"><b>TouchRotator</b>指针就在手指下方</div>
+      </div>
+      <p>把面板旋转 90&deg; 后，macOS 仍按旋转前的方向接收坐标。TouchRotator 会先把读到的坐标旋转再交给系统，因此竖置的面板也和平常一样。旋转方向会自动跟随 macOS 的显示器设置。</p>
+      <p class="step">如果一直横着用，这项设置用不到。<b>⌥⌘R</b> 可随时开关。</p>
     </div>
     <figure class="fig">
       <div class="stage"><div class="compare">
@@ -59,11 +93,15 @@
     </figure>
   </div>
 
-  <div class="showcase flip">
+  <div class="showcase reveal">
     <div class="showcase-text">
-      <h3>2. 显示器设置 —— 不打开系统设置，一次点击完成</h3>
-      <p>分辨率、亮度、镜像、旋转，都能在菜单栏的弹窗里更改。每台显示器一张卡片，接几台就有几张。</p>
-      <p class="step">点击菜单栏图标 &rarr; 点显示器名称即可展开卡片。</p>
+      <h3><span class="num">3</span>屏幕变多之后的设置，一次点击</h3>
+      <div class="ba">
+        <div class="before"><b>原样</b>打开系统设置，再找到那块屏幕</div>
+        <div class="after"><b>TouchRotator</b>菜单栏一次点击</div>
+      </div>
+      <p>分辨率、亮度、镜像、旋转，都能在菜单栏的弹窗里更改。每台显示器一张卡片，接几台就有几张。屏幕的排列顺序也可以在 设置 &rarr; 显示器 中拖动调整。</p>
+      <p class="step">点显示器名称，就会展开这张卡片。</p>
     </div>
     <figure class="fig">
       <div class="stage mock">
@@ -93,25 +131,35 @@
     </figure>
   </div>
 
-  <div class="showcase">
+  <div class="showcase flip reveal">
     <div class="showcase-text">
-      <h3>3. 窗口布局 —— 重新接上，也回到原来的位置</h3>
-      <p>拔掉显示器后，原本在上面的窗口会被挤到内建显示器，重新接上也不会回去。TouchRotator 会记住布局，在显示器接回来时把窗口恢复到原来的位置和大小。</p>
+      <h3><span class="num">4</span>重新接上，窗口也回到原来的位置</h3>
+      <div class="ba">
+        <div class="before"><b>原样</b>窗口一直挤在内建显示器上</div>
+        <div class="after"><b>TouchRotator</b>回到原来的屏幕与大小</div>
+      </div>
+      <p>拔掉显示器后，原本在上面的窗口会被挤到内建显示器，重新接上也不会回去。屏幕一多，这几乎每天都会发生。TouchRotator 会记住布局，在显示器接回来时把窗口放回原处。</p>
       <p class="step">摆放好之后，点一次<b>记住当前布局</b>。之后会自动恢复，也可以随时用<b>恢复布局</b>调出。</p>
     </div>
     <figure class="fig">
-      <div class="stage"><div class="flow">
-        <div>
-          <div class="scr mess"><i></i><i></i><i></i></div>
-          <p class="scr-label">刚接回时</p>
+      <div class="stage desks">
+        <div class="desk">
+          <p class="desk-label"><b>拔掉显示器</b>窗口被挤到内建显示器上</p>
+          <div class="rig">
+            <div class="mon off"><span class="screen"></span></div>
+            <div class="lap"><span class="screen pile"><i></i><i></i><i></i></span></div>
+          </div>
         </div>
-        <div class="arrow"><em>&rarr;</em>恢复<br>布局</div>
-        <div>
-          <div class="scr"><i></i><i></i><i></i></div>
-          <p class="scr-label">记住的布局</p>
+        <p class="desk-arrow"><em>&darr;</em> 重新接上后自动</p>
+        <div class="desk after">
+          <p class="desk-label"><b>恢复布局</b>回到原来的屏幕、原来的大小</p>
+          <div class="rig">
+            <div class="mon"><span class="screen"><i></i><i></i></span></div>
+            <div class="lap"><span class="screen"><i></i></span></div>
+          </div>
         </div>
-      </div></div>
-      <figcaption>记住每个窗口的位置与大小，在显示器接回来时恢复。常用的排布可以保存为模式随时调用。</figcaption>
+      </div>
+      <figcaption>左边是外接显示器，右边是 Mac 自带的屏幕。常用的排布可以保存为模式随时调用。</figcaption>
     </figure>
   </div>
 </div></section>
@@ -119,19 +167,19 @@
 <section><div class="wrap">
   <h2>如果你遇到这些情况</h2>
   <div class="features">
-    <div class="feature">
-      <h3>点按的位置与反应的位置不一致</h3>
-      <p>外接触摸屏竖置时最常见的症状。</p>
+    <div class="feature reveal">
+      <h3>既不能滚动，也不能右键</h3>
+      <p>接到 Mac 上的触摸屏，原样只能点击。</p>
     </div>
-    <div class="feature">
+    <div class="feature reveal">
+      <h3>触碰的位置与反应的位置不一致</h3>
+      <p>触摸落到了别的屏幕上，或者面板竖置后坐标发生了偏移。</p>
+    </div>
+    <div class="feature reveal">
       <h3>指针与手指的方向相反</h3>
       <p>向上变成向下，向右变成向左。面板的方向尚未被学习。</p>
     </div>
-    <div class="feature">
-      <h3>触摸落到了内建显示器上</h3>
-      <p>没有碰过的屏幕却有反应。选择校正的目标显示器即可解决。</p>
-    </div>
-    <div class="feature">
+    <div class="feature reveal">
       <h3>每次重新连接，窗口都乱掉</h3>
       <p>不必再一个个把窗口摆回原处。</p>
     </div>
@@ -140,25 +188,29 @@
 
 <section id="price"><div class="wrap">
   <h2>价格</h2>
-  <div class="price">
+  <div class="price reveal">
     <p class="amount">1,980 日元 <small>一次买断，含税</small></p>
-    <div>
-      <p>先<strong>免费试用 14 天全部功能</strong>。满意后只需支付一次，之后的更新也包含在内，没有月费。</p>
-      <p class="note">购买流程由销售代理（merchant of record）作为卖方处理，收据也由其发送。</p>
-    </div>
+    <ul class="price-list">
+      <li>先<strong>免费试用 14 天全部功能</strong>，之后再决定</li>
+      <li><strong>之后的更新全部包含在内</strong>，没有月费</li>
+      <li>不合适？<strong>购买后 14 天内全额退款</strong>，无需说明理由</li>
+      <li>日本语 &middot; English &middot; 简体中文</li>
+    </ul>
   </div>
   <div class="cta" style="margin-top:1.5rem">
     <button class="button" data-buy hidden>以 1,980 日元购买</button>
     <a class="button ghost" href="https://github.com/shusuke-dev/touchrotator-releases/releases/latest">开始免费试用</a>
   </div>
+  <p class="note">购买流程由销售代理（merchant of record）作为卖方处理，收据也由其发送。</p>
   <p class="note" data-not-yet>尚未开始销售。在此之前可免费使用。</p>
 </div></section>
 
-<section><div class="wrap">
+<section id="specs"><div class="wrap">
   <h2>系统要求</h2>
-  <div class="scroller"><table>
+  <div class="scroller reveal"><table>
     <tr><th>操作系统</th><td>macOS 13 (Ventura) 或更高版本</td></tr>
     <tr><th>机型</th><td>Apple silicon 与 Intel 均可</td></tr>
+    <tr><th>触摸屏</th><td>USB 连接的 HID 数字化仪。横置或竖置（90&deg; / 270&deg;）都可以</td></tr>
     <tr><th>所需权限</th><td>辅助功能与输入监控。这是 macOS 的要求，首次启动时会有引导</td></tr>
     <tr><th>语言</th><td>日本语 &middot; English &middot; 简体中文</td></tr>
     <tr><th>签名</th><td>已使用 Apple Developer ID 签名，并通过 Apple 公证</td></tr>
@@ -177,5 +229,6 @@
 </div></footer>
 <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
 <script src="../buy.js"></script>
+<script src="../motion.js" defer></script>
 </body>
 </html>

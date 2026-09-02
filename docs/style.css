@@ -9,32 +9,33 @@
   --accent-ink: #ffffff;
   --accent-soft: #e4f1f0;
   --warn: #b23f3a;
-  --sans: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP",
-          "PingFang SC", "Microsoft YaHei", system-ui, -apple-system, sans-serif;
+  --glass: rgba(255, 255, 255, .72);
+  /* On a Mac this is SF for the Latin letters and Hiragino for the
+     Japanese, which is what every other app on the machine looks like. */
+  --sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Hiragino Sans",
+          "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP",
+          "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
   --mono: ui-monospace, "SF Mono", Menlo, monospace;
+  /* Two shadows on everything that lifts: a tight one for the edge, a wide
+     soft one for the distance. One alone always looks like a sticker. */
+  --shadow: 0 1px 2px rgba(16, 24, 26, .05), 0 14px 34px -10px rgba(16, 24, 26, .18);
+  --shadow-soft: 0 1px 2px rgba(16, 24, 26, .04), 0 6px 18px -8px rgba(16, 24, 26, .12);
   /* Two widths: the page, and the longest a line of text is allowed to be.
      A wide screen should show more of the layout, not longer lines. */
   --page: 72rem;
   --measure: 44rem;
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    --ground: #14181a;
-    --panel: #1c2224;
-    --ink: #e8eded;
-    --muted: #9aa5a8;
-    --rule: #2b3234;
-    --accent: #5fbfba;
-    --accent-ink: #10201f;
-    --accent-soft: #1b2e2e;
-    --warn: #e8837c;
-  }
+  --header: 3.6rem;
+  /* Light only: the drawings, the screenshots and the palette were all
+     built for one scheme, and half-lit versions of them looked worse than
+     none. Declared so the browser's own controls follow. */
+  color-scheme: light;
 }
 
 * { box-sizing: border-box; }
 /* `display: inline-block` on .button otherwise wins over the browser's own
    [hidden] rule, and a button meant to be hidden shows anyway. */
 [hidden] { display: none !important; }
+html { scroll-behavior: smooth; }
 body {
   margin: 0;
   background: var(--ground);
@@ -43,6 +44,12 @@ body {
   font-size: 16px;
   line-height: 1.85;
   -webkit-font-smoothing: antialiased;
+}
+::selection { background: var(--accent-soft); color: var(--ink); }
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
 }
 .wrap { max-width: var(--page); margin: 0 auto; padding: 0 2rem; }
 @media (max-width: 40rem) { .wrap { padding: 0 1.25rem; } }
@@ -56,28 +63,73 @@ section > .wrap > ol { max-width: var(--measure); }
    header rather than off to one side of a wide window. */
 article { max-width: var(--measure); margin: 0 auto; }
 
-/* Header */
+/* Header — sticky and translucent, the way a toolbar behaves on this
+   machine. The hairline and shadow only appear once the page has moved,
+   so at rest the bar is not a line across an empty screen. */
 .top {
-  border-bottom: 1px solid var(--rule);
-  padding: 1rem 0;
+  position: sticky; top: 0; z-index: 10;
+  padding: .8rem 0;
   font-size: .9rem;
+  background: var(--glass);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid transparent;
+  transition: border-color .2s ease, box-shadow .2s ease;
 }
-.top .wrap { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
-.brand { font-weight: 700; text-decoration: none; color: var(--ink); }
+.top.scrolled { border-bottom-color: var(--rule); box-shadow: 0 1px 12px rgba(16, 24, 26, .06); }
+@supports not (backdrop-filter: blur(1px)) { .top { background: var(--ground); } }
+.top .wrap { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; }
+.brand {
+  display: flex; align-items: center; gap: .5rem;
+  font-weight: 700; text-decoration: none; color: var(--ink); letter-spacing: -.01em;
+}
+.brand img { width: 22px; height: 22px; border-radius: 5px; display: block; }
+.links { display: flex; gap: 1.1rem; }
+.links a {
+  color: var(--muted); text-decoration: none;
+  transition: color .15s ease;
+}
+.links a:hover { color: var(--ink); }
+@media (max-width: 46rem) { .links { display: none; } }
 .langs { margin-left: auto; display: flex; gap: .75rem; }
-.langs a { color: var(--muted); text-decoration: none; }
+.langs a { color: var(--muted); text-decoration: none; transition: color .15s ease; }
+.langs a:hover { color: var(--ink); }
 .langs a[aria-current="true"] { color: var(--ink); font-weight: 700; }
 
+/* Anchors land below the sticky bar rather than under it. */
+section[id] { scroll-margin-top: calc(var(--header) + 1rem); }
+
 /* Hero — two columns once there is room for them, so a desktop window is
-   not one narrow ribbon of text down the middle. */
-.hero { padding: 4rem 0 3.5rem; border-bottom: 1px solid var(--rule); }
+   not one narrow ribbon of text down the middle. The wash behind it is one
+   soft circle of the accent, the only decoration on the page. */
+.hero {
+  position: relative; overflow: hidden;
+  padding: 4rem 0 3.5rem; border-bottom: 1px solid var(--rule);
+}
+.hero::before {
+  content: ""; position: absolute; z-index: -1;
+  top: -30%; right: -10%; width: 55rem; height: 55rem;
+  background: radial-gradient(closest-side, var(--accent-soft), transparent 70%);
+  opacity: .8; pointer-events: none;
+}
 .hero .wrap { display: grid; gap: 2.5rem; align-items: center; }
 @media (min-width: 60rem) {
   .hero { padding: 5rem 0 4.5rem; }
   .hero .wrap { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 3.5rem; }
 }
+.eyebrow {
+  display: inline-flex; align-items: center; gap: .45rem;
+  margin: 0 0 1.1rem; padding: .3rem .8rem;
+  background: var(--accent-soft); color: var(--accent);
+  border-radius: 999px; font-size: .78rem; font-weight: 600;
+}
+.eyebrow i {
+  width: 6px; height: 6px; border-radius: 50%; background: currentColor;
+  animation: blink 2.4s ease-in-out infinite;
+}
 h1 {
-  font-size: 2.25rem; line-height: 1.35; margin: 0 0 .75rem;
+  font-size: 2.25rem; line-height: 1.3; margin: 0 0 .9rem;
+  font-weight: 700; letter-spacing: -.02em;
   text-wrap: balance;
   /* Japanese and Chinese break between any two characters. Left alone, a
      heading splits a word in half at exactly the wrong width. */
@@ -87,46 +139,89 @@ h1 {
 .tagline { font-size: 1.1rem; color: var(--muted); margin: 0 0 2rem; max-width: 34rem; }
 .cta { display: flex; gap: .75rem; flex-wrap: wrap; align-items: center; }
 .button {
-  display: inline-block; padding: .7rem 1.4rem; border-radius: 8px;
+  display: inline-block; padding: .72rem 1.5rem; border-radius: 10px;
   background: var(--accent); color: var(--accent-ink);
-  text-decoration: none; font-weight: 700;
+  text-decoration: none; font-weight: 600; letter-spacing: .01em;
+  border: 1px solid transparent; box-shadow: var(--shadow-soft);
+  transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
 }
-.button.ghost { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+.button:hover { transform: translateY(-1px); box-shadow: var(--shadow); }
+.button:active { transform: translateY(0); box-shadow: none; }
+.button.ghost {
+  background: var(--ground); color: var(--accent);
+  border-color: var(--rule); box-shadow: var(--shadow-soft);
+}
+.button.ghost:hover { border-color: var(--accent); }
 .note { color: var(--muted); font-size: .85rem; margin: .9rem 0 0; max-width: var(--measure); }
 
-img.shot {
-  display: block; max-width: 590px; width: 100%; height: auto; margin: 0;
-  border: 1px solid var(--rule); border-radius: 10px;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, .08);
+/* The screenshots are framed as windows — three lights and a title bar — so
+   a picture of one pane reads as the app rather than as a cropped rectangle.
+   Held to 460px: the captures are 590px wide and no more, and shown any
+   larger a Retina screen stretches them and they go soft. */
+.macwin {
+  max-width: 460px; border-radius: 12px; overflow: hidden;
+  background: var(--ground); border: 1px solid var(--rule);
+  box-shadow: var(--shadow);
+  transition: transform .3s ease, box-shadow .3s ease;
 }
-.shot-figure { margin: 0; }
-.shot-figure figcaption { margin-top: .8rem; font-size: .8rem; color: var(--muted); }
+.macwin:hover { transform: translateY(-2px); }
+.macwin-bar {
+  display: flex; align-items: center; gap: 6px;
+  padding: .5rem .7rem; border-bottom: 1px solid var(--rule);
+  background: linear-gradient(180deg, var(--panel), var(--ground));
+}
+.macwin-bar i { width: 11px; height: 11px; border-radius: 50%; }
+.macwin-bar i:nth-child(1) { background: #ff5f57; }
+.macwin-bar i:nth-child(2) { background: #febc2e; }
+.macwin-bar i:nth-child(3) { background: #28c840; }
+.macwin-bar span { margin-left: .4rem; font-size: .72rem; font-weight: 600; color: var(--muted); }
+img.shot { display: block; width: 100%; height: auto; margin: 0; }
+.shot-figure { margin: 0; display: grid; justify-items: center; }
+.shot-figure figcaption { max-width: 460px; margin-top: .9rem; font-size: .8rem; color: var(--muted); }
 @media (max-width: 60rem) { .shot-figure { margin-top: 1rem; } }
 
 section { padding: 3.5rem 0; border-bottom: 1px solid var(--rule); }
-h2 { font-size: 1.4rem; margin: 0 0 1rem; text-wrap: balance; }
+@media (min-width: 60rem) { section { padding: 4.5rem 0; } }
+h2 { font-size: 1.4rem; margin: 0 0 1rem; letter-spacing: -.01em; text-wrap: balance; }
 h3 { font-size: 1rem; margin: 2rem 0 .3rem; }
 p { margin: .8rem 0; }
 ul, ol { padding-left: 1.3rem; margin: .8rem 0; }
 li { margin: .35rem 0; }
-a { color: var(--accent); }
+a { color: var(--accent); text-underline-offset: 2px; }
 code { font-family: var(--mono); font-size: .88em; background: var(--panel); padding: .1em .35em; border-radius: 4px; }
 
 .features { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); }
 /* Two by two rather than three and a gap. */
 @media (min-width: 56rem) { .features { grid-template-columns: 1fr 1fr; max-width: 56rem; } }
-.feature { background: var(--panel); border-radius: 10px; padding: 1.1rem 1.25rem; }
+.feature {
+  background: var(--ground); border: 1px solid var(--rule); border-radius: 12px;
+  padding: 1.1rem 1.25rem; box-shadow: var(--shadow-soft);
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.feature:hover { transform: translateY(-2px); box-shadow: var(--shadow); border-color: var(--accent-soft); }
 .feature h3 { margin: 0 0 .3rem; }
 .feature p { margin: 0; font-size: .92rem; color: var(--muted); }
 
 /* A feature and the picture of it, side by side; every other one flipped so
    the page alternates instead of marching down one edge. */
 .showcase { display: grid; gap: 1.75rem; align-items: start; }
-.showcase + .showcase { margin-top: 3.5rem; }
+.showcase + .showcase { margin-top: 4rem; }
 .showcase-text { max-width: var(--measure); }
-.showcase-text h3 { font-size: 1.2rem; margin: 0 0 .4rem; }
+.showcase-text h3 {
+  display: flex; align-items: baseline; gap: .6rem;
+  font-size: 1.2rem; margin: 0 0 .4rem; letter-spacing: -.01em;
+}
+.showcase-text .num {
+  flex: none; width: 1.6rem; height: 1.6rem; border-radius: 50%;
+  background: var(--accent); color: var(--accent-ink);
+  font-size: .8rem; font-weight: 700; line-height: 1.6rem; text-align: center;
+  align-self: flex-start; transform: translateY(.15rem);
+}
 .showcase-text p { margin: .5rem 0 0; color: var(--muted); font-size: .95rem; }
-.showcase-text .step { margin-top: .9rem; font-size: .85rem; color: var(--muted); }
+.showcase-text .step {
+  margin-top: 1rem; padding-left: .9rem; border-left: 2px solid var(--accent-soft);
+  font-size: .85rem; color: var(--muted);
+}
 .showcase-text .step b { color: var(--ink); }
 @media (min-width: 56rem) {
   .showcase { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 3rem; }
@@ -137,7 +232,10 @@ code { font-family: var(--mono); font-size: .88em; background: var(--panel); pad
    and they are built from the page's own colours so they follow the theme. */
 .fig { margin: 0; }
 .fig figcaption { margin-top: .8rem; font-size: .82rem; color: var(--muted); line-height: 1.7; }
-.stage { background: var(--panel); border: 1px solid var(--rule); border-radius: 14px; padding: 1.15rem; }
+.stage {
+  background: var(--panel); border: 1px solid var(--rule); border-radius: 14px;
+  padding: 1.15rem;
+}
 
 /* Touch offset: the same panel with the correction off and on. */
 .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
@@ -161,6 +259,12 @@ code { font-family: var(--mono); font-size: .88em; background: var(--panel); pad
   content: ""; position: absolute; inset: -.45rem;
   border-radius: 50%; border: 1px dashed var(--accent); opacity: .45;
 }
+/* The finger is still on the glass, so the touch keeps ringing. */
+.touch::before {
+  content: ""; position: absolute; inset: -2px;
+  border-radius: 50%; border: 2px solid var(--accent);
+  animation: ripple 2.4s cubic-bezier(.2, .6, .3, 1) infinite;
+}
 /* The macOS arrow, drawn rather than fetched. */
 .pointer {
   position: absolute; width: 14px; height: 21px; background: var(--ink);
@@ -177,6 +281,17 @@ code { font-family: var(--mono); font-size: .88em; background: var(--panel); pad
   font-size: .7rem; color: var(--warn); white-space: nowrap;
 }
 
+/* What a touch does. Two columns so the gesture and its result read as a
+   pair rather than a sentence. */
+.gestures div {
+  display: flex; gap: 1rem; align-items: baseline;
+  padding: .5rem 0; border-bottom: 1px solid var(--rule); font-size: .9rem;
+}
+.gestures div:last-child { border-bottom: 0; }
+.gestures b { flex: none; width: 10rem; }
+.gestures span { color: var(--muted); }
+@media (max-width: 26rem) { .gestures div { display: block; } .gestures b { width: auto; } }
+
 /* The menu bar popup. Same rows the app puts there. */
 .mock { padding: 1rem; }
 .mock-bar {
@@ -190,8 +305,9 @@ code { font-family: var(--mono); font-size: .88em; background: var(--panel); pad
 .pop {
   width: min(17rem, 100%); margin: .5rem 0 0 auto; padding: .6rem;
   background: var(--ground); border: 1px solid var(--rule); border-radius: 14px;
-  box-shadow: 0 14px 30px rgba(0, 0, 0, .12);
+  box-shadow: var(--shadow);
   font-size: .72rem; line-height: 1.5;
+  transform-origin: top right;
 }
 .pop-head { display: flex; align-items: center; gap: .55rem; }
 .pop-icon { width: 32px; height: 32px; flex: none; display: block; }
@@ -225,42 +341,200 @@ code { font-family: var(--mono); font-size: .88em; background: var(--panel); pad
 .pop-link { margin-top: .35rem; text-align: center; color: var(--accent); }
 .pop-label { color: var(--muted); font-size: .68rem; }
 
-/* Window layout: unplugged, then put back. */
-.flow { display: grid; grid-template-columns: 1fr auto 1fr; gap: .6rem; align-items: center; }
-.flow .arrow { text-align: center; font-size: .7rem; color: var(--muted); line-height: 1.4; }
-.flow .arrow em { display: block; font-style: normal; font-size: 1.1rem; color: var(--accent); }
-.scr {
-  position: relative; aspect-ratio: 16 / 10; overflow: hidden;
-  background: var(--ground); border: 1px solid var(--rule); border-radius: 8px;
+/* Window layout. The first drawing of this was two abstract rectangles and
+   nobody could tell what they were looking at. This one draws the desk:
+   the external monitor and the laptop, before and after. Unplugged, the
+   windows are piled on the small screen; restored, they are back where
+   they were. */
+.desks { display: grid; gap: .9rem; }
+.desk-label { margin: 0 0 .55rem; font-size: .78rem; color: var(--muted); }
+.desk-label b { color: var(--ink); font-weight: 700; margin-right: .45rem; }
+.desk.after .desk-label b { color: var(--accent); }
+.desk-arrow {
+  margin: 0; text-align: center; font-size: .75rem; color: var(--muted);
 }
-.scr i { position: absolute; border-radius: 3px; background: var(--accent-soft); border: 1px solid var(--accent); }
-.scr i:nth-child(1) { left: 6%; top: 12%; width: 40%; height: 60%; }
-.scr i:nth-child(2) { left: 52%; top: 12%; width: 42%; height: 34%; }
-.scr i:nth-child(3) { left: 52%; top: 52%; width: 42%; height: 36%; }
-.scr.mess i { border-color: var(--warn); background: transparent; }
-.scr.mess i:nth-child(1) { left: 3%; top: 30%; width: 30%; height: 44%; }
-.scr.mess i:nth-child(2) { left: 26%; top: 8%; width: 38%; height: 30%; }
-.scr.mess i:nth-child(3) { left: 58%; top: 40%; width: 46%; height: 40%; }
-.scr-label { margin-top: .5rem; text-align: center; font-size: .75rem; color: var(--muted); }
+.desk-arrow em { font-style: normal; color: var(--accent); font-weight: 700; }
+.rig { display: grid; grid-template-columns: 1.55fr 1fr; gap: 1rem; align-items: end; }
+.screen {
+  position: relative; display: block; overflow: hidden;
+  aspect-ratio: 16 / 10; border-radius: 6px;
+  border: 1px solid var(--rule); background: var(--ground);
+}
+/* A monitor stands on a neck; a laptop sits on a wider base. Two shapes is
+   all it takes to tell which screen is which. */
+.mon::after {
+  content: ""; display: block; width: 22%; height: 9px; margin: 0 auto;
+  background: var(--rule); border-radius: 0 0 3px 3px;
+}
+.lap { position: relative; }
+.lap::after {
+  content: ""; display: block; height: 6px; margin: 2px -7% 0;
+  background: var(--rule); border-radius: 0 0 7px 7px;
+}
+.mon.off .screen { background: var(--panel); border-style: dashed; }
+.screen i {
+  position: absolute; border-radius: 4px; overflow: hidden;
+  background: var(--accent-soft); border: 1px solid var(--accent);
+}
+/* Three lights on every little window, so the drawing reads as a desktop. */
+.screen i::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 7px;
+  background-color: rgba(127, 127, 127, .12);
+  background-image:
+    radial-gradient(circle 1.4px at 4px 3.5px, #ff5f57 98%, transparent 100%),
+    radial-gradient(circle 1.4px at 9px 3.5px, #febc2e 98%, transparent 100%),
+    radial-gradient(circle 1.4px at 14px 3.5px, #28c840 98%, transparent 100%);
+  background-repeat: no-repeat;
+}
+/* The windows are not blank rectangles. Each is drawn as the kind of window
+   it is — a browser, a list, an editor — so the same three can be followed
+   from the pile back to their own screens. Shapes only: nobody's logo, and
+   nothing that pretends to be a real product. */
+.screen i::after {
+  content: ""; position: absolute; left: 7%; right: 7%; top: 18%; bottom: 8%;
+  background-repeat: no-repeat;
+}
+/* A browser: address bar, a picture, a few lines of text. */
+.mon .screen i:nth-child(1)::after,
+.screen.pile i:nth-child(1)::after {
+  background-image:
+    linear-gradient(var(--rule), var(--rule)),
+    linear-gradient(var(--accent-soft), var(--accent-soft)),
+    linear-gradient(var(--rule), var(--rule)),
+    linear-gradient(var(--rule), var(--rule)),
+    linear-gradient(var(--rule), var(--rule));
+  background-size: 84% 6px, 100% 40%, 88% 4px, 66% 4px, 78% 4px;
+  background-position: 0 0, 0 30%, 0 76%, 0 88%, 0 100%;
+}
+/* A list — mail, notes, a chat. */
+.mon .screen i:nth-child(2)::after,
+.screen.pile i:nth-child(2)::after {
+  background-image:
+    linear-gradient(var(--rule), var(--rule)),
+    repeating-linear-gradient(var(--rule) 0 5px, transparent 5px 15px);
+  background-size: 58% 6px, 100% 74%;
+  background-position: 0 0, 0 100%;
+}
+/* An editor: short lines, some of them highlighted. */
+.lap .screen i:nth-child(1)::after,
+.screen.pile i:nth-child(3)::after {
+  background-image:
+    linear-gradient(var(--accent-soft), var(--accent-soft)),
+    linear-gradient(var(--rule), var(--rule)),
+    linear-gradient(var(--accent-soft), var(--accent-soft)),
+    linear-gradient(var(--rule), var(--rule)),
+    linear-gradient(var(--rule), var(--rule));
+  background-size: 42% 5px, 64% 5px, 30% 5px, 76% 5px, 52% 5px;
+  background-position: 0 4%, 8% 28%, 8% 52%, 0 76%, 8% 100%;
+}
+.mon .screen i:nth-child(1) { left: 5%; top: 10%; width: 51%; height: 78%; }
+.mon .screen i:nth-child(2) { left: 60%; top: 10%; width: 35%; height: 78%; }
+.lap .screen i:nth-child(1) { left: 8%; top: 12%; width: 84%; height: 74%; }
+/* Everything herded onto the built-in display: too big for it, and on top
+   of each other. */
+.screen.pile i { border-color: var(--warn); background: transparent; }
+.screen.pile i:nth-child(1) { left: -2%; top: 18%; width: 78%; height: 74%; }
+.screen.pile i:nth-child(2) { left: 12%; top: 8%; width: 78%; height: 74%; }
+.screen.pile i:nth-child(3) { left: 26%; top: 26%; width: 78%; height: 74%; }
 
+/* Price — the number, then what it buys, in a card that looks like the
+   thing you are about to press. */
 .price {
-  background: var(--accent-soft); border-radius: 10px; padding: 1.5rem;
-  display: grid; gap: 1.25rem; align-items: center;
+  background: var(--accent-soft); border-radius: 16px; padding: 1.5rem;
+  display: grid; gap: 1.5rem; align-items: center;
 }
-@media (min-width: 48rem) { .price { grid-template-columns: auto minmax(0, 1fr); padding: 1.75rem 2rem; } }
+@media (min-width: 48rem) { .price { grid-template-columns: auto minmax(0, 1fr); padding: 2rem 2.25rem; } }
 .price p { margin: .4rem 0; }
-.price .amount { font-size: 2rem; font-weight: 700; margin: 0; white-space: nowrap; }
-.price .amount small { font-size: 1rem; font-weight: 400; color: var(--muted); }
+.price .amount { font-size: 2.4rem; font-weight: 700; margin: 0; white-space: nowrap; letter-spacing: -.02em; }
+.price .amount small { display: block; font-size: .85rem; font-weight: 600; color: var(--muted); letter-spacing: 0; }
+.price-list { list-style: none; margin: 0; padding: 0; display: grid; gap: .45rem; }
+.price-list li { display: flex; gap: .6rem; align-items: baseline; margin: 0; font-size: .92rem; }
+.price-list li::before {
+  content: "✓"; flex: none; color: var(--accent); font-weight: 700;
+}
 
-.scroller { overflow-x: auto; }
-table { border-collapse: collapse; width: 100%; max-width: 52rem; font-size: .92rem; }
-th, td { text-align: left; padding: .6rem .8rem; border-bottom: 1px solid var(--rule); vertical-align: top; }
-th { color: var(--muted); font-weight: 700; width: 12rem; }
-@media (max-width: 34rem) { th { width: auto; } }
+/* Specs, in a card rather than a bare table. */
+.scroller {
+  overflow-x: auto;
+  background: var(--ground); border: 1px solid var(--rule); border-radius: 14px;
+  box-shadow: var(--shadow-soft);
+}
+table { border-collapse: collapse; width: 100%; font-size: .92rem; }
+th, td { text-align: left; padding: .8rem 1.1rem; border-bottom: 1px solid var(--rule); vertical-align: top; }
+tr:last-child th, tr:last-child td { border-bottom: 0; }
+th { color: var(--muted); font-weight: 700; width: 12rem; white-space: nowrap; }
+@media (max-width: 34rem) { th { width: auto; white-space: normal; } }
+article .scroller { border: 0; box-shadow: none; background: none; }
 
 footer { padding: 2.5rem 0 4rem; color: var(--muted); font-size: .85rem; }
 footer nav { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem; }
-footer a { color: var(--muted); }
+footer a { color: var(--muted); transition: color .15s ease; }
+footer a:hover { color: var(--ink); }
 
 article h2:first-of-type { margin-top: 0; }
 article section { border: 0; padding: 1.5rem 0 0; }
+
+/* ---- Motion -------------------------------------------------------------
+   Everything here is decoration: the page is complete and readable with all
+   of it switched off, which is what happens when the visitor asks for less
+   movement, and when the script does not run (the .js class is set by it). */
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@keyframes ripple { 0% { transform: scale(1); opacity: .5; } 70%, 100% { transform: scale(2.1); opacity: 0; } }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: .35; } }
+@keyframes popin { from { opacity: 0; transform: scale(.94) translateY(-6px); } to { opacity: 1; transform: none; } }
+@keyframes knob { from { transform: translateX(-12px); } to { transform: none; } }
+@keyframes settle { from { opacity: 0; transform: translateY(10px) scale(.96); } to { opacity: 1; transform: none; } }
+
+/* The hero is on screen at load, so it plays straight away, one line after
+   the next rather than all at once. */
+.js .hero .wrap > * > *,
+.js .hero .wrap > figure { animation: rise .7s cubic-bezier(.2, .7, .3, 1) both; }
+.js .hero .eyebrow { animation-delay: .02s; }
+.js .hero h1 { animation-delay: .08s; }
+.js .hero .tagline { animation-delay: .16s; }
+.js .hero .cta { animation-delay: .24s; }
+.js .hero .note { animation-delay: .32s; }
+.js .hero .shot-figure { animation-delay: .3s; }
+
+/* Everything below waits until it is nearly in view. */
+.js .reveal { opacity: 0; transform: translateY(16px); transition: opacity .7s cubic-bezier(.2, .7, .3, 1), transform .7s cubic-bezier(.2, .7, .3, 1); }
+.js .reveal.in { opacity: 1; transform: none; }
+.js .reveal:nth-child(2) { transition-delay: .06s; }
+.js .reveal:nth-child(3) { transition-delay: .12s; }
+.js .reveal:nth-child(4) { transition-delay: .18s; }
+
+/* The popup arrives the way a popover does, and its switch lands a moment
+   after the panel it sits in. */
+.js .reveal.in .pop { animation: popin .5s cubic-bezier(.2, .8, .25, 1) both; }
+.js .reveal.in .sw::after { animation: knob .45s .35s cubic-bezier(.2, .8, .25, 1) both; }
+/* The restored windows drop into place, one after another. */
+.js .reveal.in .desk.after .screen i { animation: settle .5s cubic-bezier(.2, .8, .25, 1) both; }
+.js .reveal.in .desk.after .mon .screen i:nth-child(1) { animation-delay: .15s; }
+.js .reveal.in .desk.after .mon .screen i:nth-child(2) { animation-delay: .27s; }
+.js .reveal.in .desk.after .lap .screen i { animation-delay: .39s; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+  }
+  .js .reveal { opacity: 1; transform: none; }
+}
+
+/* Before and after, in two lines, so a visitor who reads nothing else still
+   knows what each feature changes. */
+.ba { display: grid; gap: .4rem; margin: .9rem 0 0; }
+.ba div {
+  display: flex; gap: .55rem; align-items: baseline;
+  font-size: .88rem; line-height: 1.6;
+}
+.ba div::before { flex: none; font-weight: 700; }
+.ba .before { color: var(--muted); }
+.ba .before::before { content: "✗"; color: var(--warn); }
+.ba .after { color: var(--ink); }
+.ba .after::before { content: "✓"; color: var(--accent); }
+.ba b { font-weight: 700; margin-right: .35rem; }
+.ba .before b { color: var(--muted); }
+.ba .after b { color: var(--accent); }
