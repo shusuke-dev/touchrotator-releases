@@ -402,10 +402,16 @@ code { font-family: var(--mono); font-size: .88em; background: var(--panel); pad
 .price p { margin: .4rem 0; }
 .price .amount { font-size: 2.4rem; font-weight: 700; margin: 0; white-space: nowrap; letter-spacing: -.02em; }
 .price .amount small { display: block; font-size: .85rem; font-weight: 600; color: var(--muted); letter-spacing: 0; }
-.price-list { list-style: none; margin: 0; padding: 0; display: grid; gap: .45rem; }
-.price-list li { display: flex; gap: .6rem; align-items: baseline; margin: 0; font-size: .92rem; }
+.price-list { list-style: none; margin: 0; padding: 0; display: grid; gap: .55rem; }
+/* The tick hangs in the margin rather than being a flex item. As a flex
+   row every run of text in the line became an item of its own, so the
+   sentence was chopped into columns and, on a phone, wrapped mid-phrase. */
+.price-list li {
+  position: relative; margin: 0; padding-left: 1.5rem; font-size: .92rem;
+}
 .price-list li::before {
-  content: "✓"; flex: none; color: var(--accent); font-weight: 700;
+  content: "✓"; position: absolute; left: 0; top: 0;
+  color: var(--accent); font-weight: 700;
 }
 
 /* Specs, in a card rather than a bare table. */
@@ -418,7 +424,17 @@ table { border-collapse: collapse; width: 100%; font-size: .92rem; }
 th, td { text-align: left; padding: .8rem 1.1rem; border-bottom: 1px solid var(--rule); vertical-align: top; }
 tr:last-child th, tr:last-child td { border-bottom: 0; }
 th { color: var(--muted); font-weight: 700; width: 12rem; white-space: nowrap; }
-@media (max-width: 34rem) { th { width: auto; white-space: normal; } }
+/* On a phone there is no room for two columns: a 12rem label column left
+   the wide rows breaking one character at a time (「販売業/者」). The label
+   goes above its value instead, and the row keeps the rule under it. */
+@media (max-width: 34rem) {
+  table, tbody, tr, th, td { display: block; width: auto; }
+  tr { border-bottom: 1px solid var(--rule); }
+  tr:last-child { border-bottom: 0; }
+  th, td { border-bottom: 0; white-space: normal; }
+  th { padding: .8rem 1.1rem 0; }
+  td { padding: .1rem 1.1rem .8rem; }
+}
 article .scroller { border: 0; box-shadow: none; background: none; }
 
 footer { padding: 2.5rem 0 4rem; color: var(--muted); font-size: .85rem; }
