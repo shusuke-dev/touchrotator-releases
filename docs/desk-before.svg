@@ -70,7 +70,7 @@
   <g opacity=".6">
     <rect x="372" y="44" width="228" height="138" rx="7" fill="#8f9ba0"/>
     <rect x="378" y="50" width="216" height="126" rx="2" fill="#f5f7f8" stroke="#cfd8da" stroke-width="1.5" stroke-dasharray="5 4"/>
-    <path d="M556 182l32 24h-44z" fill="#cfd8da"/>
+    <path d="M456 186h60l13 20h-86z" fill="#cfd8da"/>
     <rect x="396" y="182" width="180" height="4" rx="2" fill="#cfd8da"/>
     <rect x="366" y="150" width="8" height="14" rx="2" fill="#8f9ba0"/>
   </g>

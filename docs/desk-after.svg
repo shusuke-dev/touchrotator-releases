@@ -75,6 +75,9 @@
       <rect x="8" y="76" width="34" height="4.5" rx="2.2" fill="#e2e7e9"/>
     </g>
   </g>
-  <path d="M556 182l32 24h-44z" fill="#cfd8da"/>
+  <!-- The kickstand: a centered leg flaring into a foot, the way a folding
+       cover stands a tablet up. Off to one side, it read as a stray
+       triangle rather than something holding the panel up. -->
+  <path d="M456 186h60l13 20h-86z" fill="#cfd8da"/>
   <rect x="396" y="182" width="180" height="4" rx="2" fill="#cfd8da"/>
 </svg>
