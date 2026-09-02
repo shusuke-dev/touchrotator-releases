@@ -18,7 +18,7 @@
   <div>
     <p class="eyebrow"><i></i>常驻菜单栏 &middot; macOS 13 或更高版本</p>
     <h1>让触摸屏在 Mac 上<br>真正能用。</h1>
-    <p class="tagline">macOS 只把触摸屏当作鼠标。点按能点，却无法滚动、无法右键，触碰的位置还常常与实际反应的位置不一致。TouchRotator 直接读取面板的 USB 信号，把触摸变成手机上那样的操作。</p>
+    <p class="tagline">macOS 只把触摸屏当作鼠标：不能滚动、不能右键，触碰的位置还会错开。TouchRotator 把这些补上。</p>
     <div class="cta">
       <a class="button" href="https://github.com/shusuke-dev/touchrotator-releases/releases/latest">免费试用 14 天</a>
       <a class="button ghost" href="#price">查看价格</a>
@@ -30,13 +30,13 @@
       <div class="macwin-bar"><i></i><i></i><i></i><span>TouchRotator</span></div>
       <img class="shot" src="../screenshot-zh.png" alt="TouchRotator 设置窗口的「触摸校正」" width="590" height="544">
     </div>
-    <figcaption>设置窗口的「触摸校正」。左侧列表可切换<strong>常规 / 触摸校正 / 显示器 / 窗口布局 / 使用方法 / 权限 / 关于</strong>。无需终端，也无需命令。</figcaption>
+    <figcaption>设置窗口的「触摸校正」。无需终端，也无需命令。</figcaption>
   </figure>
 </div></div>
 
 <section id="features"><div class="wrap">
   <h2>能做什么</h2>
-  <p>接一台触摸屏，就意味着你至少有两块屏幕。出问题的不只是触摸：哪块屏显示什么、每次插拔之后窗口跑到哪里去。TouchRotator 把这一整套都放进菜单栏的一个图标里。</p>
+  <p class="lede">接一台触摸屏，就意味着至少有两块屏幕。触摸、显示器设置、窗口布局，都收进菜单栏的一个图标里。</p>
 
   <div class="showcase reveal">
     <div class="showcase-text">
@@ -45,7 +45,7 @@
         <div class="before"><b>原样</b>手指只能点击</div>
         <div class="after"><b>TouchRotator</b>点按、滚动、右键、拖拽</div>
       </div>
-      <p>直接读取面板的 USB 信号（HID 数字化仪），把手指的动作变成这些操作。条件允许时会以独占方式接管面板，因此不受 macOS「这次触摸算哪块屏的鼠标」这一映射的影响。触控板与鼠标一切照旧。</p>
+      <p>直接读取面板的 USB 信号，把手指的动作变成这些操作。触控板与鼠标一切照旧。</p>
       <p class="step">与显示区域之间的细微偏差，可以用<b>四点校准</b>对齐。</p>
     </div>
     <figure class="fig">
@@ -57,7 +57,7 @@
         <div><b>长按后移动</b><span>拖拽</span></div>
         <div><b>手掌碰到屏幕</b><span>忽略（阈值可自行调整）</span></div>
       </div></div>
-      <figcaption>这正是 macOS 没有提供的部分。原样接上时，手指既不能滚动，也不能右键。</figcaption>
+      <figcaption>原样接上时，手指既不能滚动，也不能右键。</figcaption>
     </figure>
   </div>
 
@@ -68,7 +68,7 @@
         <div class="before"><b>原样</b>指针与手指错开，或方向相反</div>
         <div class="after"><b>TouchRotator</b>指针就在手指下方</div>
       </div>
-      <p>把面板旋转 90&deg; 后，macOS 仍按旋转前的方向接收坐标。TouchRotator 会先把读到的坐标旋转再交给系统，因此竖置的面板也和平常一样。旋转方向会自动跟随 macOS 的显示器设置。</p>
+      <p>把面板旋转 90&deg; 后，macOS 仍按旋转前的方向接收坐标。TouchRotator 会先把坐标旋转再交给系统。</p>
       <p class="step">如果一直横着用，这项设置用不到。<b>⌥⌘R</b> 可随时开关。</p>
     </div>
     <figure class="fig">
@@ -91,7 +91,7 @@
           <b>✓ TouchRotator</b>
         </div>
       </div></div>
-      <figcaption>在竖置的面板上触碰同一位置。未校正时指针与手指分离，校正后指针就在手指下方。</figcaption>
+      <figcaption>在竖置的面板上触碰同一位置。校正后，指针就在手指下方。</figcaption>
     </figure>
   </div>
 
@@ -102,7 +102,7 @@
         <div class="before"><b>原样</b>打开系统设置，再找到那块屏幕</div>
         <div class="after"><b>TouchRotator</b>菜单栏一次点击</div>
       </div>
-      <p>分辨率、亮度、镜像、旋转，都能在菜单栏的弹窗里更改。每台显示器一张卡片，接几台就有几张。屏幕的排列顺序也可以在 设置 &rarr; 显示器 中拖动调整。</p>
+      <p>分辨率、亮度、镜像、旋转，都能在菜单栏里更改。每台显示器一张卡片。</p>
       <p class="step">点显示器名称，就会展开这张卡片。</p>
     </div>
     <figure class="fig">
@@ -129,7 +129,7 @@
           </div>
         </div>
       </div>
-      <figcaption>菜单栏弹窗（示意图）。上方的开关控制校正的开 / 关，下方是显示器与窗口布局。</figcaption>
+      <figcaption>菜单栏弹窗（示意图）。上方的开关控制校正的开 / 关。</figcaption>
     </figure>
   </div>
 
@@ -140,8 +140,8 @@
         <div class="before"><b>原样</b>窗口一直挤在内建显示器上</div>
         <div class="after"><b>TouchRotator</b>回到原来的屏幕与大小</div>
       </div>
-      <p>拔掉显示器后，原本在上面的窗口会被挤到内建显示器，重新接上也不会回去。屏幕一多，这几乎每天都会发生。TouchRotator 会记住布局，在显示器接回来时把窗口放回原处。</p>
-      <p class="step">摆放好之后，点一次<b>记住当前布局</b>。之后会自动恢复，也可以随时用<b>恢复布局</b>调出。</p>
+      <p>拔掉显示器后，窗口会被挤到内建显示器，重新接上也不会回去。TouchRotator 会记住布局，接回来时把窗口放回原处。</p>
+      <p class="step">摆放好之后，点一次<b>记住当前布局</b>。之后会自动恢复。</p>
     </div>
     <figure class="fig">
       <div class="stage desks">
@@ -156,7 +156,7 @@
           <img src="../desk-after.svg" alt="重新接上线缆后：窗口回到原来的屏幕与大小" width="640" height="250">
         </div>
       </div>
-      <figcaption>左边是 Mac 本机，右边是用 USB 连接的触摸屏。常用的排布可以保存为模式随时调用。</figcaption>
+      <figcaption>左边是 Mac 本机，右边是用 USB 连接的触摸屏。</figcaption>
     </figure>
   </div>
 </div></section>
@@ -174,7 +174,7 @@
     </div>
     <div class="feature reveal">
       <h3>指针与手指的方向相反</h3>
-      <p>向上变成向下，向右变成向左。面板的方向尚未被学习。</p>
+      <p>向上变成向下，向右变成向左。面板的方向没有对上。</p>
     </div>
     <div class="feature reveal">
       <h3>每次重新连接，窗口都乱掉</h3>
@@ -198,7 +198,7 @@
     <button class="button" data-buy hidden>以 1,980 日元购买</button>
     <a class="button ghost" href="https://github.com/shusuke-dev/touchrotator-releases/releases/latest">开始免费试用</a>
   </div>
-  <p class="note">由于购买前可先免费试用，<a href="refund.html">购买后原则上不办理退款</a>。购买流程由销售代理（merchant of record）作为卖方处理，收据也由其发送。</p>
+  <p class="note">由于购买前可先免费试用，<a href="refund.html">购买后原则上不办理退款</a>。购买流程由销售代理（merchant of record）作为卖方处理。</p>
   <p class="note" data-not-yet>尚未开始销售。在此之前可免费使用。</p>
 </div></section>
 
@@ -207,16 +207,16 @@
   <div class="scroller reveal"><table>
     <tr><th>操作系统</th><td>macOS 13 (Ventura) 或更高版本</td></tr>
     <tr><th>机型</th><td>Apple silicon 与 Intel 均可</td></tr>
-    <tr><th>触摸屏</th><td>USB 连接的 HID 数字化仪。横置或竖置（90&deg; / 270&deg;）都可以</td></tr>
-    <tr><th>所需权限</th><td>辅助功能与输入监控。这是 macOS 的要求，首次启动时会有引导</td></tr>
+    <tr><th>触摸屏</th><td>USB 连接的 HID 数字化仪。横置或竖置都可以</td></tr>
+    <tr><th>所需权限</th><td>辅助功能与输入监控（首次启动时会有引导）</td></tr>
     <tr><th>语言</th><td>日本语 &middot; English &middot; 简体中文</td></tr>
-    <tr><th>签名</th><td>已使用 Apple Developer ID 签名，并通过 Apple 公证</td></tr>
+    <tr><th>签名</th><td>已使用 Apple Developer ID 签名并通过 Apple 公证</td></tr>
   </table></div>
 </div></section>
 
 <section><div class="wrap">
   <h2>联系我们</h2>
-  <p>使用问题、故障反馈与购买前的咨询，请联系 <a href="mailto:info@tsubomi.jp">info@tsubomi.jp</a>。我们以日语或英语回复。</p>
+  <p>使用问题与故障反馈，请联系 <a href="mailto:info@tsubomi.jp">info@tsubomi.jp</a>。我们以日语或英语回复。</p>
 </div></section>
 
 <footer><div class="wrap">

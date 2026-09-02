@@ -18,7 +18,7 @@
   <div>
     <p class="eyebrow"><i></i>メニューバー常駐 &middot; macOS 13 以降</p>
     <h1>タッチモニターを、<br>Mac で使えるようにする。</h1>
-    <p class="tagline">macOS はタッチモニターをマウスとしてしか扱いません。触ればクリックはできても、スクロールも右クリックもできず、触った場所と違うところが反応します。TouchRotator はパネルの USB 信号を直接読み取り、iPhone のような操作に変えます。</p>
+    <p class="tagline">macOS はタッチモニターをマウスとしか見ません。スクロールも右クリックもできず、触った場所ともずれます。TouchRotator がそこを直します。</p>
     <div class="cta">
       <a class="button" href="https://github.com/shusuke-dev/touchrotator-releases/releases/latest">14 日間無料でためす</a>
       <a class="button ghost" href="#price">価格を見る</a>
@@ -30,13 +30,13 @@
       <div class="macwin-bar"><i></i><i></i><i></i><span>TouchRotator</span></div>
       <img class="shot" src="screenshot-ja.png" alt="TouchRotator の設定画面（タッチ補正）" width="590" height="544">
     </div>
-    <figcaption>設定画面の「タッチ補正」。左のリストで<strong>一般 / タッチ補正 / モニター設定 / ウィンドウ配置 / 使い方 / 権限 / 情報</strong>を切り替えます。ターミナルもコマンドも使いません。</figcaption>
+    <figcaption>設定画面の「タッチ補正」。ターミナルもコマンドも使いません。</figcaption>
   </figure>
 </div></div>
 
 <section id="features"><div class="wrap">
   <h2>できること</h2>
-  <p>タッチモニターを足すということは、画面が 2 枚以上あるということです。そこで起きることは、タッチが思ったとおりに動かないことだけではありません。どの画面に何を映すか、繋ぎ直すたびにウィンドウがどこへ行くか。TouchRotator は、その一式を 1 つのアプリにまとめてメニューバーに置きます。</p>
+  <p class="lede">タッチモニターを足すと、画面は 2 枚以上になります。タッチも、モニター設定も、ウィンドウ配置も、まとめてメニューバーに。</p>
 
   <div class="showcase reveal">
     <div class="showcase-text">
@@ -45,7 +45,7 @@
         <div class="before"><b>素のまま</b>クリックしかできない</div>
         <div class="after"><b>TouchRotator</b>タップ・スクロール・右クリック・ドラッグ</div>
       </div>
-      <p>パネルの USB 信号（HID デジタイザ）を直接読み取り、指の動きをそのまま操作に変えます。可能な場合はパネルを排他的に取得するので、macOS 側の「タッチをどの画面のマウスにするか」という割り当てに左右されません。トラックパッドやマウスは、これまでどおりです。</p>
+      <p>パネルの USB 信号を直接読み取ります。トラックパッドやマウスは、これまでどおりです。</p>
       <p class="step">表示領域とのわずかなずれは、<b>4 点キャリブレーション</b>で合わせられます。</p>
     </div>
     <figure class="fig">
@@ -57,7 +57,7 @@
         <div><b>長押ししてから動かす</b><span>ドラッグ</span></div>
         <div><b>手のひらが当たる</b><span>無視（しきい値は調整できます）</span></div>
       </div></div>
-      <figcaption>macOS が用意していないのはこの部分です。スクロールも右クリックも、素のままでは指ではできません。</figcaption>
+      <figcaption>素のままでは、指でスクロールも右クリックもできません。</figcaption>
     </figure>
   </div>
 
@@ -68,7 +68,7 @@
         <div class="before"><b>素のまま</b>指とカーソルが離れる・逆に動く</div>
         <div class="after"><b>TouchRotator</b>指の下にカーソルが来る</div>
       </div>
-      <p>パネルを 90&deg; 回すと、macOS は回す前の向きのまま座標を受け取ります。TouchRotator は読み取った座標を回してから渡すので、縦置きでも触った場所にカーソルが来ます。回転は macOS のディスプレイ設定に自動で追従します。</p>
+      <p>90&deg; 回しても、macOS は回す前の座標のまま受け取ります。TouchRotator は座標を回してから渡します。</p>
       <p class="step">横置きのまま使うなら、この設定は要りません。<b>⌥⌘R</b> でいつでも ON / OFF。</p>
     </div>
     <figure class="fig">
@@ -91,7 +91,7 @@
           <b>✓ TouchRotator</b>
         </div>
       </div></div>
-      <figcaption>縦置きのパネルで同じ場所を触ったところ。補正がないと指とカーソルが離れ、補正すると指の下にカーソルが来ます。</figcaption>
+      <figcaption>縦置きで同じ場所を触ったところ。補正すると、指の下にカーソルが来ます。</figcaption>
     </figure>
   </div>
 
@@ -102,7 +102,7 @@
         <div class="before"><b>素のまま</b>システム設定を開いて、画面を選んで…</div>
         <div class="after"><b>TouchRotator</b>メニューバーから 1 クリック</div>
       </div>
-      <p>解像度・明るさ・ミラーリング・回転を、メニューバーのポップアップから。ディスプレイごとにカードが 1 枚並び、繋いでいる台数だけ増えます。画面の並び順も、設定 → モニター設定でドラッグして変えられます。</p>
+      <p>解像度・明るさ・ミラーリング・回転を、メニューバーから。ディスプレイごとにカードが 1 枚並びます。</p>
       <p class="step">ディスプレイ名を押すと、そのカードが開きます。</p>
     </div>
     <figure class="fig">
@@ -129,7 +129,7 @@
           </div>
         </div>
       </div>
-      <figcaption>メニューバーのポップアップ（図）。上のスイッチが補正の ON / OFF、下がディスプレイとウィンドウ配置です。</figcaption>
+      <figcaption>メニューバーのポップアップ（図）。上のスイッチが補正の ON / OFF です。</figcaption>
     </figure>
   </div>
 
@@ -140,8 +140,8 @@
         <div class="before"><b>素のまま</b>外すと内蔵ディスプレイに寄せられたまま</div>
         <div class="after"><b>TouchRotator</b>元の画面へ、元の大きさで戻る</div>
       </div>
-      <p>モニタを外すと、開いていたウィンドウは内蔵ディスプレイへ押し込まれ、繋ぎ直しても戻りません。画面が 2 枚以上あれば毎日のように起きることです。TouchRotator は配置を記憶しておき、モニタが戻ったときに元の位置と大きさへ復元します。</p>
-      <p class="step">好きに並べたら <b>今の配置を記憶</b> を 1 回。以後は自動で戻り、<b>配置を復元</b> でいつでも呼び出せます。</p>
+      <p>外すとウィンドウは内蔵ディスプレイへ押し込まれ、繋ぎ直しても戻りません。TouchRotator は配置を覚えていて、元の位置と大きさへ戻します。</p>
+      <p class="step">好きに並べたら <b>今の配置を記憶</b> を 1 回。以後は自動で戻ります。</p>
     </div>
     <figure class="fig">
       <div class="stage desks">
@@ -156,7 +156,7 @@
           <img src="desk-after.svg" alt="ケーブルを繋ぎ直したところ。ウィンドウが元の画面へ元の大きさで戻っている" width="640" height="250">
         </div>
       </div>
-      <figcaption>左が Mac 本体、右が USB で繋いだタッチモニターです。よく使う並べ方はパターンとして呼び出せます。</figcaption>
+      <figcaption>左が Mac 本体、右が USB で繋いだタッチモニターです。</figcaption>
     </figure>
   </div>
 </div></section>
@@ -174,7 +174,7 @@
     </div>
     <div class="feature reveal">
       <h3>指と逆にカーソルが動く</h3>
-      <p>上に動かすと下へ、右に動かすと左へ。パネルの向きが学習されていない状態です。</p>
+      <p>上に動かすと下へ、右に動かすと左へ。パネルの向きが合っていません。</p>
     </div>
     <div class="feature reveal">
       <h3>繋ぎ直すたびに配置が崩れる</h3>
@@ -198,7 +198,7 @@
     <button class="button" data-buy hidden>1,980 円で購入する</button>
     <a class="button ghost" href="https://github.com/shusuke-dev/touchrotator-releases/releases/latest">まず無料でためす</a>
   </div>
-  <p class="note">無料期間で確かめていただけるため、<a href="refund.html">購入後の返金は原則お受けしていません</a>。購入手続きは販売代行が売主として行い、領収書もそちらから届きます。</p>
+  <p class="note">無料期間で確かめられるため、<a href="refund.html">購入後の返金は原則お受けしていません</a>。購入手続きは販売代行が売主として行います。</p>
   <p class="note" data-not-yet>まもなく販売を開始します。それまでは無料でお使いいただけます。</p>
 </div></section>
 
@@ -207,16 +207,16 @@
   <div class="scroller reveal"><table>
     <tr><th>OS</th><td>macOS 13 (Ventura) 以降</td></tr>
     <tr><th>Mac</th><td>Apple silicon &middot; Intel の両方</td></tr>
-    <tr><th>タッチパネル</th><td>USB 接続の HID デジタイザ。縦置き（90&deg; / 270&deg;）でも横置きでも使えます</td></tr>
-    <tr><th>必要な権限</th><td>アクセシビリティ、入力監視。macOS が求めるもので、初回起動時に案内が出ます</td></tr>
+    <tr><th>タッチパネル</th><td>USB 接続の HID デジタイザ。縦置き・横置きどちらでも</td></tr>
+    <tr><th>必要な権限</th><td>アクセシビリティと入力監視（初回起動時に案内が出ます）</td></tr>
     <tr><th>言語</th><td>日本語 &middot; English &middot; 简体中文</td></tr>
-    <tr><th>署名</th><td>Apple Developer ID で署名済み、Apple の公証（notarization）済み</td></tr>
+    <tr><th>署名</th><td>Apple Developer ID で署名・Apple の公証済み</td></tr>
   </table></div>
 </div></section>
 
 <section><div class="wrap">
   <h2>お問い合わせ</h2>
-  <p>使い方の質問、うまく動かないとき、購入前のご相談は <a href="mailto:info@tsubomi.jp">info@tsubomi.jp</a> へ。日本語・英語で対応します。</p>
+  <p>ご質問・不具合は <a href="mailto:info@tsubomi.jp">info@tsubomi.jp</a> へ。日本語・英語で対応します。</p>
 </div></section>
 
 <footer><div class="wrap">

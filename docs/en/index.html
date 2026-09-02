@@ -18,7 +18,7 @@
   <div>
     <p class="eyebrow"><i></i>Lives in the menu bar &middot; macOS 13+</p>
     <h1>Make a touch monitor work on a Mac.</h1>
-    <p class="tagline">macOS treats a touch monitor as a mouse and nothing more. A tap clicks, but you cannot scroll, cannot right-click, and taps often land somewhere other than where your finger was. TouchRotator reads the panel's own USB signal and turns touch into the gestures you already expect from a phone.</p>
+    <p class="tagline">macOS sees a touch monitor as a mouse and nothing more: no scrolling, no right-click, and taps that land somewhere else. TouchRotator fixes that.</p>
     <div class="cta">
       <a class="button" href="https://github.com/shusuke-dev/touchrotator-releases/releases/latest">Try it free for 14 days</a>
       <a class="button ghost" href="#price">See the price</a>
@@ -30,13 +30,13 @@
       <div class="macwin-bar"><i></i><i></i><i></i><span>TouchRotator</span></div>
       <img class="shot" src="../screenshot-en.png" alt="The TouchRotator settings window, Touch pane" width="590" height="544">
     </div>
-    <figcaption>The settings window, Touch pane. The list on the left switches between <strong>General / Touch / Displays / Window layout / How to use / Permissions / About</strong>. No Terminal, no commands.</figcaption>
+    <figcaption>The settings window, Touch pane. No Terminal, no commands.</figcaption>
   </figure>
 </div></div>
 
 <section id="features"><div class="wrap">
   <h2>What it does</h2>
-  <p>Adding a touch monitor means having two screens or more. And the touch is not the only thing that goes wrong: which screen shows what, and where your windows end up every time you unplug. TouchRotator puts the whole set into one menu bar item.</p>
+  <p class="lede">A touch monitor means two screens or more. Touch, display settings and window layout, all in one menu bar item.</p>
 
   <div class="showcase reveal">
     <div class="showcase-text">
@@ -45,7 +45,7 @@
         <div class="before"><b>Out of the box</b>a finger can click, and nothing else</div>
         <div class="after"><b>TouchRotator</b>tap, scroll, right-click, drag</div>
       </div>
-      <p>It reads the panel's USB signal (the HID digitizer) directly and turns your finger into those gestures. Where it can, it takes the panel exclusively, so macOS's own idea of which screen a touch should drive cannot get in the way. Your trackpad and mouse carry on as before.</p>
+      <p>It reads the panel's USB signal directly. Your trackpad and mouse carry on as before.</p>
       <p class="step">A small offset from the display area is settled with <b>4-point calibration</b>.</p>
     </div>
     <figure class="fig">
@@ -57,7 +57,7 @@
         <div><b>Long press, then move</b><span>Drag</span></div>
         <div><b>Palm on the glass</b><span>Ignored (the threshold is yours to set)</span></div>
       </div></div>
-      <figcaption>This is the part macOS does not provide. Out of the box, a finger cannot scroll and cannot right-click.</figcaption>
+      <figcaption>Out of the box, a finger cannot scroll and cannot right-click.</figcaption>
     </figure>
   </div>
 
@@ -68,7 +68,7 @@
         <div class="before"><b>Out of the box</b>the pointer sits away from your finger, or runs the other way</div>
         <div class="after"><b>TouchRotator</b>the pointer is under your finger</div>
       </div>
-      <p>Turn the panel 90&deg; and macOS still receives its coordinates in the old orientation. TouchRotator rotates them before passing them on, so a portrait panel behaves like any other. Rotation follows the macOS display setting on its own.</p>
+      <p>Turn the panel 90&deg; and macOS still receives the old coordinates. TouchRotator rotates them before passing them on.</p>
       <p class="step">Using the panel landscape? Then you never need this. <b>⌥⌘R</b> turns it on and off any time.</p>
     </div>
     <figure class="fig">
@@ -91,7 +91,7 @@
           <b>✓ TouchRotator</b>
         </div>
       </div></div>
-      <figcaption>The same spot touched on a panel standing on its side. Without correction the pointer sits away from your finger; with it, the pointer is under your finger.</figcaption>
+      <figcaption>The same spot touched on a panel standing on its side. With correction, the pointer is under your finger.</figcaption>
     </figure>
   </div>
 
@@ -102,7 +102,7 @@
         <div class="before"><b>Out of the box</b>System Settings, then find the right screen</div>
         <div class="after"><b>TouchRotator</b>one click from the menu bar</div>
       </div>
-      <p>Resolution, brightness, mirroring and rotation, from the menu bar popup. One card per display, as many as you have plugged in. The screens themselves can be dragged into order in Settings &rarr; Displays.</p>
+      <p>Resolution, brightness, mirroring and rotation, from the menu bar. One card per display.</p>
       <p class="step">Press a display's name and its card opens.</p>
     </div>
     <figure class="fig">
@@ -129,7 +129,7 @@
           </div>
         </div>
       </div>
-      <figcaption>The menu bar popup (a drawing). The switch at the top turns correction on and off; the cards below are your displays and your window layout.</figcaption>
+      <figcaption>The menu bar popup (a drawing). The switch at the top turns correction on and off.</figcaption>
     </figure>
   </div>
 
@@ -140,8 +140,8 @@
         <div class="before"><b>Out of the box</b>they stay piled on the built-in display</div>
         <div class="after"><b>TouchRotator</b>back on the right screen, at the right size</div>
       </div>
-      <p>Unplug a monitor and the windows that were on it are pushed onto the built-in display; plugging it back in does not bring them home. With two screens or more it happens most days. TouchRotator remembers where they were and puts them back.</p>
-      <p class="step">Arrange things how you like them, then press <b>Remember this layout</b> once. From then on it happens by itself, and <b>Restore layout</b> brings it back any time.</p>
+      <p>Unplug a monitor and its windows are pushed onto the built-in display; plugging it back in does not bring them home. TouchRotator remembers where they were and puts them back.</p>
+      <p class="step">Arrange things how you like them, then press <b>Remember this layout</b> once. From then on it happens by itself.</p>
     </div>
     <figure class="fig">
       <div class="stage desks">
@@ -156,7 +156,7 @@
           <img src="../desk-after.svg" alt="The cable plugged back in: every window back on its own screen, at its own size" width="640" height="250">
         </div>
       </div>
-      <figcaption>The Mac on the left, the touch monitor it is plugged into on the right. Arrangements you use often can be saved as patterns.</figcaption>
+      <figcaption>The Mac on the left, the touch monitor it is plugged into on the right.</figcaption>
     </figure>
   </div>
 </div></section>
@@ -198,7 +198,7 @@
     <button class="button" data-buy hidden>Buy for JPY 1,980</button>
     <a class="button ghost" href="https://github.com/shusuke-dev/touchrotator-releases/releases/latest">Start the free trial</a>
   </div>
-  <p class="note">Because the trial lets you check first, <a href="refund.html">purchases are not refunded as a rule</a>. They are processed by our merchant of record, who is the seller of record and sends your receipt.</p>
+  <p class="note">Because the trial lets you check first, <a href="refund.html">purchases are not refunded as a rule</a>. They are processed by our merchant of record.</p>
   <p class="note" data-not-yet>Not on sale quite yet. Until then it is free to use.</p>
 </div></section>
 
@@ -207,16 +207,16 @@
   <div class="scroller reveal"><table>
     <tr><th>OS</th><td>macOS 13 (Ventura) or later</td></tr>
     <tr><th>Mac</th><td>Apple silicon and Intel</td></tr>
-    <tr><th>Touch panel</th><td>A USB HID digitizer. Landscape or standing up (90&deg; / 270&deg;), either way</td></tr>
-    <tr><th>Permissions</th><td>Accessibility and Input Monitoring, which macOS requires. The app walks you through them on first launch</td></tr>
+    <tr><th>Touch panel</th><td>A USB HID digitizer. Landscape or standing up, either way</td></tr>
+    <tr><th>Permissions</th><td>Accessibility and Input Monitoring (the app walks you through them on first launch)</td></tr>
     <tr><th>Languages</th><td>Japanese &middot; English &middot; Simplified Chinese</td></tr>
-    <tr><th>Signing</th><td>Signed with an Apple Developer ID and notarized by Apple</td></tr>
+    <tr><th>Signing</th><td>Signed with an Apple Developer ID, notarized by Apple</td></tr>
   </table></div>
 </div></section>
 
 <section><div class="wrap">
   <h2>Contact</h2>
-  <p>Questions before you buy, and anything that does not work: <a href="mailto:info@tsubomi.jp">info@tsubomi.jp</a>. We reply in English or Japanese.</p>
+  <p>Questions and problems: <a href="mailto:info@tsubomi.jp">info@tsubomi.jp</a>. We reply in English or Japanese.</p>
 </div></section>
 
 <footer><div class="wrap">
