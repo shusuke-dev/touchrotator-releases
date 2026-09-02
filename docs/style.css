@@ -240,12 +240,18 @@ code { font-family: var(--mono); font-size: .88em; background: var(--panel); pad
 /* Touch offset: the same panel with the correction off and on. */
 .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 .case { text-align: center; }
-.case b { display: block; margin-top: .6rem; font-size: .82rem; }
+.case .stand { display: block; width: 22%; height: 9px; margin: 0 auto; background: #cfd8da; }
+.case .stand::after {
+  content: ""; display: block; width: 300%; height: 6px; margin: 0 -100%;
+  border-radius: 3px; background: #cfd8da;
+}
+.case b { display: block; margin-top: .8rem; font-size: .82rem; }
 .case.bad b { color: var(--warn); }
 .case.good b { color: var(--accent); }
+/* Drawn as the monitor it is: a dark bezel, and a neck and foot below. */
 .panel {
-  position: relative; aspect-ratio: 3 / 4; border-radius: 8px;
-  border: 1px solid var(--rule); background: var(--ground);
+  position: relative; aspect-ratio: 3 / 4; border-radius: 10px;
+  border: 7px solid #2f3a3e; background: var(--ground);
   background-image: linear-gradient(var(--rule) 1px, transparent 1px),
                     linear-gradient(90deg, var(--rule) 1px, transparent 1px);
   background-size: 25% 25%;
@@ -342,100 +348,21 @@ code { font-family: var(--mono); font-size: .88em; background: var(--panel); pad
 .pop-label { color: var(--muted); font-size: .68rem; }
 
 /* Window layout. The first drawing of this was two abstract rectangles and
-   nobody could tell what they were looking at. This one draws the desk:
-   the external monitor and the laptop, before and after. Unplugged, the
-   windows are piled on the small screen; restored, they are back where
-   they were. */
+   nobody could tell what they were looking at. It is a proper illustration
+   now — an external monitor on its stand and a laptop on its base, drawn in
+   docs/desk-*.svg — with the labels kept out here so every language can
+   write its own. */
 .desks { display: grid; gap: .9rem; }
 .desk-label { margin: 0 0 .55rem; font-size: .78rem; color: var(--muted); }
 .desk-label b { color: var(--ink); font-weight: 700; margin-right: .45rem; }
 .desk.after .desk-label b { color: var(--accent); }
-.desk-arrow {
-  margin: 0; text-align: center; font-size: .75rem; color: var(--muted);
+.desk img { display: block; width: 100%; height: auto; }
+.desk-legend {
+  display: grid; grid-template-columns: 45% 55%;
+  margin: .35rem 0 0; font-size: .72rem; color: var(--muted); text-align: center;
 }
+.desk-arrow { margin: 0; text-align: center; font-size: .75rem; color: var(--muted); }
 .desk-arrow em { font-style: normal; color: var(--accent); font-weight: 700; }
-.rig { display: grid; grid-template-columns: 1.55fr 1fr; gap: 1rem; align-items: end; }
-.screen {
-  position: relative; display: block; overflow: hidden;
-  aspect-ratio: 16 / 10; border-radius: 6px;
-  border: 1px solid var(--rule); background: var(--ground);
-}
-/* A monitor stands on a neck; a laptop sits on a wider base. Two shapes is
-   all it takes to tell which screen is which. */
-.mon::after {
-  content: ""; display: block; width: 22%; height: 9px; margin: 0 auto;
-  background: var(--rule); border-radius: 0 0 3px 3px;
-}
-.lap { position: relative; }
-.lap::after {
-  content: ""; display: block; height: 6px; margin: 2px -7% 0;
-  background: var(--rule); border-radius: 0 0 7px 7px;
-}
-.mon.off .screen { background: var(--panel); border-style: dashed; }
-.screen i {
-  position: absolute; border-radius: 4px; overflow: hidden;
-  background: var(--accent-soft); border: 1px solid var(--accent);
-}
-/* Three lights on every little window, so the drawing reads as a desktop. */
-.screen i::before {
-  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 7px;
-  background-color: rgba(127, 127, 127, .12);
-  background-image:
-    radial-gradient(circle 1.4px at 4px 3.5px, #ff5f57 98%, transparent 100%),
-    radial-gradient(circle 1.4px at 9px 3.5px, #febc2e 98%, transparent 100%),
-    radial-gradient(circle 1.4px at 14px 3.5px, #28c840 98%, transparent 100%);
-  background-repeat: no-repeat;
-}
-/* The windows are not blank rectangles. Each is drawn as the kind of window
-   it is — a browser, a list, an editor — so the same three can be followed
-   from the pile back to their own screens. Shapes only: nobody's logo, and
-   nothing that pretends to be a real product. */
-.screen i::after {
-  content: ""; position: absolute; left: 7%; right: 7%; top: 18%; bottom: 8%;
-  background-repeat: no-repeat;
-}
-/* A browser: address bar, a picture, a few lines of text. */
-.mon .screen i:nth-child(1)::after,
-.screen.pile i:nth-child(1)::after {
-  background-image:
-    linear-gradient(var(--rule), var(--rule)),
-    linear-gradient(var(--accent-soft), var(--accent-soft)),
-    linear-gradient(var(--rule), var(--rule)),
-    linear-gradient(var(--rule), var(--rule)),
-    linear-gradient(var(--rule), var(--rule));
-  background-size: 84% 6px, 100% 40%, 88% 4px, 66% 4px, 78% 4px;
-  background-position: 0 0, 0 30%, 0 76%, 0 88%, 0 100%;
-}
-/* A list — mail, notes, a chat. */
-.mon .screen i:nth-child(2)::after,
-.screen.pile i:nth-child(2)::after {
-  background-image:
-    linear-gradient(var(--rule), var(--rule)),
-    repeating-linear-gradient(var(--rule) 0 5px, transparent 5px 15px);
-  background-size: 58% 6px, 100% 74%;
-  background-position: 0 0, 0 100%;
-}
-/* An editor: short lines, some of them highlighted. */
-.lap .screen i:nth-child(1)::after,
-.screen.pile i:nth-child(3)::after {
-  background-image:
-    linear-gradient(var(--accent-soft), var(--accent-soft)),
-    linear-gradient(var(--rule), var(--rule)),
-    linear-gradient(var(--accent-soft), var(--accent-soft)),
-    linear-gradient(var(--rule), var(--rule)),
-    linear-gradient(var(--rule), var(--rule));
-  background-size: 42% 5px, 64% 5px, 30% 5px, 76% 5px, 52% 5px;
-  background-position: 0 4%, 8% 28%, 8% 52%, 0 76%, 8% 100%;
-}
-.mon .screen i:nth-child(1) { left: 5%; top: 10%; width: 51%; height: 78%; }
-.mon .screen i:nth-child(2) { left: 60%; top: 10%; width: 35%; height: 78%; }
-.lap .screen i:nth-child(1) { left: 8%; top: 12%; width: 84%; height: 74%; }
-/* Everything herded onto the built-in display: too big for it, and on top
-   of each other. */
-.screen.pile i { border-color: var(--warn); background: transparent; }
-.screen.pile i:nth-child(1) { left: -2%; top: 18%; width: 78%; height: 74%; }
-.screen.pile i:nth-child(2) { left: 12%; top: 8%; width: 78%; height: 74%; }
-.screen.pile i:nth-child(3) { left: 26%; top: 26%; width: 78%; height: 74%; }
 
 /* Price — the number, then what it buys, in a card that looks like the
    thing you are about to press. */
@@ -507,11 +434,9 @@ article section { border: 0; padding: 1.5rem 0 0; }
    after the panel it sits in. */
 .js .reveal.in .pop { animation: popin .5s cubic-bezier(.2, .8, .25, 1) both; }
 .js .reveal.in .sw::after { animation: knob .45s .35s cubic-bezier(.2, .8, .25, 1) both; }
-/* The restored windows drop into place, one after another. */
-.js .reveal.in .desk.after .screen i { animation: settle .5s cubic-bezier(.2, .8, .25, 1) both; }
-.js .reveal.in .desk.after .mon .screen i:nth-child(1) { animation-delay: .15s; }
-.js .reveal.in .desk.after .mon .screen i:nth-child(2) { animation-delay: .27s; }
-.js .reveal.in .desk.after .lap .screen i { animation-delay: .39s; }
+/* The restored desk arrives a moment after the one above it, so the two
+   read as before and after rather than as one picture. */
+.js .reveal.in .desk.after { animation: settle .6s .25s cubic-bezier(.2, .8, .25, 1) both; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

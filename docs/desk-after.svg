@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 250" role="img" width="640" height="250">
+  <title>Restored: every window back on its own screen, at its own size</title>
+  <defs>
+    <clipPath id="monScreenB"><rect x="34" y="32" width="246" height="146" rx="3"/></clipPath>
+    <clipPath id="lapScreenB"><rect x="358" y="53" width="234" height="139" rx="2"/></clipPath>
+    <g id="barB">
+      <circle cx="8" cy="5" r="1.8" fill="#ff5f57"/>
+      <circle cx="15" cy="5" r="1.8" fill="#febc2e"/>
+      <circle cx="22" cy="5" r="1.8" fill="#28c840"/>
+    </g>
+  </defs>
+
+  <!-- The external monitor, plugged back in, with the two windows that
+       live on it. -->
+  <rect x="24" y="22" width="266" height="166" rx="9" fill="#2f3a3e"/>
+  <rect x="34" y="32" width="246" height="146" rx="3" fill="#ffffff"/>
+  <g clip-path="url(#monScreenB)">
+    <g transform="translate(44,44)">
+      <rect width="142" height="122" rx="5" fill="#ffffff" stroke="#0f6b6b" stroke-width="1.4"/>
+      <rect width="142" height="12" rx="5" fill="#f5f7f8"/>
+      <use href="#barB" x="0" y="1.5"/>
+      <rect x="9" y="20" width="118" height="7" rx="3.5" fill="#e2e7e9"/>
+      <rect x="9" y="34" width="124" height="42" rx="3" fill="#e4f1f0"/>
+      <rect x="9" y="84" width="110" height="5" rx="2.5" fill="#e2e7e9"/>
+      <rect x="9" y="95" width="86" height="5" rx="2.5" fill="#e2e7e9"/>
+      <rect x="9" y="106" width="100" height="5" rx="2.5" fill="#e2e7e9"/>
+    </g>
+    <g transform="translate(194,44)">
+      <rect width="76" height="122" rx="5" fill="#ffffff" stroke="#0f6b6b" stroke-width="1.4"/>
+      <rect width="76" height="12" rx="5" fill="#f5f7f8"/>
+      <use href="#barB" x="0" y="1.5"/>
+      <rect x="8" y="21" width="42" height="6" rx="3" fill="#e2e7e9"/>
+      <rect x="8" y="36" width="60" height="5" rx="2.5" fill="#e2e7e9"/>
+      <rect x="8" y="48" width="60" height="5" rx="2.5" fill="#e2e7e9"/>
+      <rect x="8" y="60" width="60" height="5" rx="2.5" fill="#e2e7e9"/>
+      <rect x="8" y="72" width="60" height="5" rx="2.5" fill="#e2e7e9"/>
+      <rect x="8" y="84" width="44" height="5" rx="2.5" fill="#e2e7e9"/>
+    </g>
+  </g>
+  <rect x="142" y="188" width="30" height="24" fill="#cfd8da"/>
+  <rect x="107" y="212" width="100" height="10" rx="5" fill="#cfd8da"/>
+
+  <!-- The laptop keeps the one window that was always its own. -->
+  <rect x="350" y="45" width="250" height="155" rx="9" fill="#2f3a3e"/>
+  <circle cx="475" cy="49.5" r="1.8" fill="#5b666b"/>
+  <rect x="358" y="53" width="234" height="139" rx="2" fill="#ffffff"/>
+  <g clip-path="url(#lapScreenB)">
+    <g transform="translate(374,68)">
+      <rect width="202" height="110" rx="5" fill="#ffffff" stroke="#0f6b6b" stroke-width="1.4"/>
+      <rect width="202" height="12" rx="5" fill="#f5f7f8"/>
+      <use href="#barB" x="0" y="1.5"/>
+      <rect x="10" y="24" width="70" height="5" rx="2.5" fill="#e4f1f0"/>
+      <rect x="20" y="38" width="120" height="5" rx="2.5" fill="#e2e7e9"/>
+      <rect x="20" y="52" width="56" height="5" rx="2.5" fill="#e4f1f0"/>
+      <rect x="10" y="66" width="150" height="5" rx="2.5" fill="#e2e7e9"/>
+      <rect x="20" y="80" width="96" height="5" rx="2.5" fill="#e2e7e9"/>
+      <rect x="20" y="94" width="130" height="5" rx="2.5" fill="#e2e7e9"/>
+    </g>
+  </g>
+  <path d="M336 200h278l14 18H322z" fill="#dfe5e7"/>
+  <path d="M336 200h278l2 3H334z" fill="#cfd8da"/>
+  <rect x="440" y="209" width="70" height="4" rx="2" fill="#cfd8da"/>
+</svg>

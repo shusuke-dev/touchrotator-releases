@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 250" role="img" width="640" height="250">
+  <title>Unplugged: the windows are pushed onto the built-in display</title>
+  <defs>
+    <clipPath id="lapScreenA"><rect x="358" y="53" width="234" height="139" rx="2"/></clipPath>
+    <g id="barA">
+      <circle cx="8" cy="5" r="1.8" fill="#ff5f57"/>
+      <circle cx="15" cy="5" r="1.8" fill="#febc2e"/>
+      <circle cx="22" cy="5" r="1.8" fill="#28c840"/>
+    </g>
+  </defs>
+
+  <!-- The external monitor, unplugged: outline only, nothing on it. -->
+  <g opacity=".55">
+    <rect x="24" y="22" width="266" height="166" rx="9" fill="#ffffff" stroke="#cfd8da" stroke-width="2"/>
+    <rect x="34" y="32" width="246" height="146" rx="3" fill="#f5f7f8" stroke="#cfd8da" stroke-width="1.5" stroke-dasharray="5 4"/>
+    <rect x="142" y="188" width="30" height="24" fill="#cfd8da"/>
+    <rect x="107" y="212" width="100" height="10" rx="5" fill="#cfd8da"/>
+  </g>
+
+  <!-- The laptop. Everything that was on the monitor is now here, too big
+       for the screen and stacked on top of itself. -->
+  <rect x="350" y="45" width="250" height="155" rx="9" fill="#2f3a3e"/>
+  <circle cx="475" cy="49.5" r="1.8" fill="#5b666b"/>
+  <rect x="358" y="53" width="234" height="139" rx="2" fill="#ffffff"/>
+
+  <g clip-path="url(#lapScreenA)">
+    <!-- three windows, the same three that were on the big screen -->
+    <g transform="translate(352,74)">
+      <rect width="168" height="108" rx="5" fill="#ffffff" stroke="#b23f3a" stroke-width="1.4"/>
+      <rect width="168" height="12" rx="5" fill="#f5f7f8"/>
+      <use href="#barA" x="0" y="1.5"/>
+      <rect x="10" y="20" width="140" height="7" rx="3.5" fill="#e2e7e9"/>
+      <rect x="10" y="34" width="148" height="34" rx="3" fill="#e4f1f0"/>
+      <rect x="10" y="76" width="120" height="5" rx="2.5" fill="#e2e7e9"/>
+      <rect x="10" y="87" width="90" height="5" rx="2.5" fill="#e2e7e9"/>
+    </g>
+    <g transform="translate(396,62)">
+      <rect width="168" height="108" rx="5" fill="#ffffff" stroke="#b23f3a" stroke-width="1.4"/>
+      <rect width="168" height="12" rx="5" fill="#f5f7f8"/>
+      <use href="#barA" x="0" y="1.5"/>
+      <rect x="10" y="22" width="70" height="6" rx="3" fill="#e2e7e9"/>
+      <rect x="10" y="38" width="148" height="5" rx="2.5" fill="#e2e7e9"/>
+      <rect x="10" y="52" width="148" height="5" rx="2.5" fill="#e2e7e9"/>
+      <rect x="10" y="66" width="148" height="5" rx="2.5" fill="#e2e7e9"/>
+      <rect x="10" y="80" width="120" height="5" rx="2.5" fill="#e2e7e9"/>
+    </g>
+    <g transform="translate(440,92)">
+      <rect width="168" height="108" rx="5" fill="#ffffff" stroke="#b23f3a" stroke-width="1.4"/>
+      <rect width="168" height="12" rx="5" fill="#f5f7f8"/>
+      <use href="#barA" x="0" y="1.5"/>
+      <rect x="10" y="22" width="60" height="5" rx="2.5" fill="#e4f1f0"/>
+      <rect x="18" y="34" width="96" height="5" rx="2.5" fill="#e2e7e9"/>
+      <rect x="18" y="46" width="44" height="5" rx="2.5" fill="#e4f1f0"/>
+      <rect x="10" y="58" width="112" height="5" rx="2.5" fill="#e2e7e9"/>
+      <rect x="18" y="70" width="78" height="5" rx="2.5" fill="#e2e7e9"/>
+    </g>
+  </g>
+
+  <!-- The base, seen slightly from the front. -->
+  <path d="M336 200h278l14 18H322z" fill="#dfe5e7"/>
+  <path d="M336 200h278l2 3H334z" fill="#cfd8da"/>
+  <rect x="440" y="209" width="70" height="4" rx="2" fill="#cfd8da"/>
+</svg>
