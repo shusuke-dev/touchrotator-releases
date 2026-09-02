@@ -11,6 +11,13 @@ const THANKS_URL = "https://touchrotator.tsubomi.jp/thanks.html";
 
 const configured = PADDLE_TOKEN !== "" && typeof Paddle !== "undefined";
 
+// The page knows which language its reader is on; the checkout and the
+// thank-you page follow it. Hard-coded, a buyer who came from the English
+// page paid on a Japanese form.
+const PAGE = document.documentElement.lang;
+const CHECKOUT_LOCALE = PAGE === "ja" ? "ja" : PAGE === "zh-Hans" ? "zh-Hans" : "en";
+const THANKS_LANG = PAGE === "ja" ? "ja" : PAGE === "zh-Hans" ? "zh" : "en";
+
 if (configured) {
   Paddle.Initialize({
     token: PADDLE_TOKEN,
@@ -22,7 +29,7 @@ if (configured) {
       if (event.name !== "checkout.completed") return;
       const transaction = event.data && event.data.transaction_id;
       if (!transaction) return;
-      location.href = `${THANKS_URL}?_ptxn=${encodeURIComponent(transaction)}`;
+      location.href = `${THANKS_URL}?_ptxn=${encodeURIComponent(transaction)}&lang=${THANKS_LANG}`;
     },
   });
 }
@@ -35,7 +42,7 @@ document.querySelectorAll("[data-buy]").forEach((button) => {
     // above could add the transaction number.
     Paddle.Checkout.open({
       items: [{ priceId: PADDLE_PRICE, quantity: 1 }],
-      settings: { locale: "ja" },
+      settings: { locale: CHECKOUT_LOCALE },
     });
   });
 });

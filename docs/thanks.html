@@ -6,6 +6,7 @@
 <meta name="robots" content="noindex">
 <title>ライセンスキー &mdash; TouchRotator</title>
 <link rel="stylesheet" href="style.css">
+<link rel="icon" href="appicon.png">
 <style>
   .key {
     font-family: var(--mono); font-size: .95rem; word-break: break-all;
@@ -14,16 +15,28 @@
   }
   .state { min-height: 6rem; }
   .bad { color: var(--warn); }
+  /* The switcher is a row of buttons rather than links: the key on this page
+     came from one request and a reload would have to ask for it again. */
+  .langs button {
+    background: none; border: 0; padding: 0; font: inherit; cursor: pointer;
+    color: var(--muted);
+  }
+  .langs button[aria-current="true"] { color: var(--ink); font-weight: 700; }
 </style>
 </head>
 <body>
 <header class="top"><div class="wrap">
   <a class="brand" href="index.html">TouchRotator</a>
+  <nav class="langs" id="langs">
+    <button type="button" data-lang="ja">日本語</button>
+    <button type="button" data-lang="en">English</button>
+    <button type="button" data-lang="zh">简体中文</button>
+  </nav>
 </div></header>
 
 <section><div class="wrap"><article>
   <h1 style="font-size:1.8rem" data-t="title">ありがとうございます</h1>
-  <div class="state" id="state"><p data-t="loading">ライセンスキーを用意しています…</p></div>
+  <div class="state" id="state"></div>
   <div id="next" hidden>
     <h2 data-t="how">使い方</h2>
     <ol>
@@ -31,7 +44,7 @@
       <li data-t="step2">左の「情報」を開く</li>
       <li data-t="step3">ライセンスキーの欄に、上のキーを貼って「認証」</li>
     </ol>
-    <p class="note" data-t="keep">このページは閉じても構いません。同じリンクを開けば、同じキーがもう一度出ます。うまくいかないときは <a href="mailto:info@tsubomi.jp">info@tsubomi.jp</a> へ。</p>
+    <p class="note" id="keep"></p>
   </div>
 </article></div></section>
 
@@ -50,6 +63,7 @@
  * the same key back, which is also how someone who lost theirs gets it again.
  */
 const KEY_SERVICE = "https://touchrotator-keys.small-leaf-0ba1.workers.dev";
+const MAIL = "info@tsubomi.jp";
 
 const TEXT = {
   ja: {
@@ -58,12 +72,13 @@ const TEXT = {
     step1: "メニューバーの TouchRotator を開き、下の「設定…」を押す",
     step2: "左の「情報」を開く",
     step3: "ライセンスキーの欄に、上のキーを貼って「認証」",
-    keep: "このページは閉じても構いません。同じリンクを開けば、同じキーがもう一度出ます。うまくいかないときは info@tsubomi.jp へ。",
+    keep: "このページは閉じても構いません。同じリンクを開けば、同じキーがもう一度出ます。うまくいかないときは " + MAIL + " へ。",
     yours: "あなたのライセンスキー",
     noTxn: "購入の情報が見つかりません。決済後の画面から開き直してください。",
     notPaid: "この購入はまだ完了していません。決済が終わってからもう一度お試しください。",
-    trouble: "キーを取り出せませんでした。お手数ですが info@tsubomi.jp までご連絡ください。すぐにお送りします。",
-    nav: [["", "ホーム"], ["terms.html", "利用規約"], ["privacy.html", "プライバシー"], ["refund.html", "返金"]],
+    trouble: "キーを取り出せませんでした。お手数ですが " + MAIL + " までご連絡ください。すぐにお送りします。",
+    nav: [["", "ホーム"], ["terms.html", "利用規約"], ["privacy.html", "プライバシー"],
+          ["refund.html", "返金"], ["tokushoho.html", "特定商取引法に基づく表記"]],
   },
   en: {
     title: "Thank you", loading: "Fetching your licence key…",
@@ -71,11 +86,11 @@ const TEXT = {
     step1: "Open TouchRotator in the menu bar and press Settings…",
     step2: "Open About on the left",
     step3: "Paste the key above into the licence field and press Activate",
-    keep: "You can close this page. Opening the same link shows the same key again. If anything goes wrong, write to info@tsubomi.jp.",
+    keep: "You can close this page. Opening the same link shows the same key again. If anything goes wrong, write to " + MAIL + ".",
     yours: "Your licence key",
     noTxn: "No purchase found. Please open this page from the screen you saw after paying.",
     notPaid: "This purchase has not completed yet. Please try again once payment goes through.",
-    trouble: "The key could not be fetched. Please write to info@tsubomi.jp and we will send it straight away.",
+    trouble: "The key could not be fetched. Please write to " + MAIL + " and we will send it straight away.",
     nav: [["", "Home"], ["terms.html", "Terms"], ["privacy.html", "Privacy"], ["refund.html", "Refunds"]],
   },
   zh: {
@@ -84,65 +99,113 @@ const TEXT = {
     step1: "在菜单栏打开 TouchRotator，点按下方的「设置…」",
     step2: "打开左侧的「关于」",
     step3: "把上面的密钥粘贴到许可证栏，然后点按「激活」",
-    keep: "可以关闭本页。打开同一链接会再次显示同一密钥。如有问题请联系 info@tsubomi.jp。",
+    keep: "可以关闭本页。打开同一链接会再次显示同一密钥。如有问题请联系 " + MAIL + "。",
     yours: "您的许可证密钥",
     noTxn: "未找到购买信息。请从付款后的页面重新打开。",
     notPaid: "该笔购买尚未完成。请在付款完成后重试。",
-    trouble: "无法取得密钥。请联系 info@tsubomi.jp，我们会立即发送。",
+    trouble: "无法取得密钥。请联系 " + MAIL + "，我们会立即发送。",
     nav: [["", "首页"], ["terms.html", "使用条款"], ["privacy.html", "隐私政策"], ["refund.html", "退款政策"]],
   },
 };
 
-const lang = (navigator.language || "ja").toLowerCase().startsWith("zh")
-  ? "zh"
-  : (navigator.language || "ja").toLowerCase().startsWith("ja") ? "ja" : "en";
-const t = TEXT[lang];
-document.documentElement.lang = lang === "zh" ? "zh-Hans" : lang;
-document.querySelectorAll("[data-t]").forEach((node) => {
-  const value = t[node.dataset.t];
-  if (!value) return;
-  if (node.querySelector("a")) return;   // keep the mail link intact
-  node.textContent = value;
-});
+// The reader's own language, unless the address says otherwise. A buyer whose
+// browser is set to something we do not have gets English.
+const asked = new URLSearchParams(location.search).get("lang");
+const tongue = (navigator.language || "ja").toLowerCase();
+let lang = TEXT[asked] ? asked
+  : tongue.startsWith("zh") ? "zh"
+  : tongue.startsWith("ja") ? "ja" : "en";
+let t = TEXT[lang];
 
-// The footer in the reader's own language, pointing at that language's pages.
-const home = lang === "ja" ? "" : lang + "/";
-document.getElementById("foot").innerHTML = t.nav
-  .map(([page, label]) => `<a href="${home}${page || "index.html"}">${label}</a>`)
-  .join("");
+/**
+ * A sentence with the address in it, as text plus a real link.
+ *
+ * The line about closing the page has the address in the middle of it. Left as
+ * markup it could not be translated — anything holding a link was skipped, so
+ * an English buyer read that one paragraph in Japanese.
+ */
+function withMail(sentence) {
+  const fragment = document.createDocumentFragment();
+  const parts = sentence.split(MAIL);
+  parts.forEach((part, index) => {
+    if (index) {
+      const link = document.createElement("a");
+      link.href = "mailto:" + MAIL;
+      link.textContent = MAIL;
+      fragment.appendChild(link);
+    }
+    fragment.appendChild(document.createTextNode(part));
+  });
+  return fragment;
+}
 
 const state = document.getElementById("state");
-const say = (message, bad) => {
+// What the page is showing, so switching language can say it again.
+let showing = { kind: "loading" };
+
+const say = (kind, value) => {
+  showing = { kind, value };
   state.innerHTML = "";
+  if (kind === "key") {
+    const label = document.createElement("p");
+    label.textContent = t.yours;
+    const box = document.createElement("div");
+    box.className = "key";
+    box.textContent = value;
+    state.append(label, box);
+    document.getElementById("next").hidden = false;
+    return;
+  }
   const p = document.createElement("p");
-  if (bad) p.className = "bad";
-  p.textContent = message;
+  if (kind !== "loading") p.className = "bad";
+  p.appendChild(withMail(t[kind === "loading" ? "loading" : kind]));
   state.appendChild(p);
 };
 
+function draw(next) {
+  lang = next;
+  t = TEXT[lang];
+  document.documentElement.lang = lang === "zh" ? "zh-Hans" : lang;
+  document.querySelectorAll("[data-t]").forEach((node) => {
+    const value = t[node.dataset.t];
+    if (value) node.textContent = value;
+  });
+  document.getElementById("keep").replaceChildren(withMail(t.keep));
+
+  // The footer in the reader's own language, pointing at that language's pages.
+  const home = lang === "ja" ? "" : lang + "/";
+  document.getElementById("foot").innerHTML = t.nav
+    .map(([page, label]) => `<a href="${home}${page || "index.html"}">${label}</a>`)
+    .join("");
+  document.querySelectorAll("#langs button").forEach((button) => {
+    if (button.dataset.lang === lang) button.setAttribute("aria-current", "true");
+    else button.removeAttribute("aria-current");
+  });
+
+  say(showing.kind, showing.value);
+}
+
+document.querySelectorAll("#langs button").forEach((button) => {
+  button.addEventListener("click", () => draw(button.dataset.lang));
+});
+
+draw(lang);
+
 async function run() {
   const id = new URLSearchParams(location.search).get("_ptxn");
-  if (!id) return say(t.noTxn, true);
-  if (!KEY_SERVICE) return say(t.trouble, true);
+  if (!id) return say("noTxn");
+  if (!KEY_SERVICE) return say("trouble");
 
   let answer;
   try {
     const response = await fetch(`${KEY_SERVICE}?txn=${encodeURIComponent(id)}`);
     answer = await response.json();
-    if (response.status === 402) return say(t.notPaid, true);
-    if (!response.ok || !answer.key) return say(t.trouble, true);
+    if (response.status === 402) return say("notPaid");
+    if (!response.ok || !answer.key) return say("trouble");
   } catch {
-    return say(t.trouble, true);
+    return say("trouble");
   }
-
-  state.innerHTML = "";
-  const label = document.createElement("p");
-  label.textContent = t.yours;
-  const box = document.createElement("div");
-  box.className = "key";
-  box.textContent = answer.key;
-  state.append(label, box);
-  document.getElementById("next").hidden = false;
+  say("key", answer.key);
 }
 
 run();
