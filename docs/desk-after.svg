@@ -1,63 +1,80 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 250" role="img" width="640" height="250">
-  <title>Restored: every window back on its own screen, at its own size</title>
+  <title>Plugged back in: every window back on its own screen, at its own size</title>
   <defs>
-    <clipPath id="monScreenB"><rect x="34" y="32" width="246" height="146" rx="3"/></clipPath>
-    <clipPath id="lapScreenB"><rect x="358" y="53" width="234" height="139" rx="2"/></clipPath>
-    <g id="barB">
-      <circle cx="8" cy="5" r="1.8" fill="#ff5f57"/>
-      <circle cx="15" cy="5" r="1.8" fill="#febc2e"/>
-      <circle cx="22" cy="5" r="1.8" fill="#28c840"/>
+    <clipPath id="lapB"><rect x="60" y="34" width="200" height="124" rx="2"/></clipPath>
+    <clipPath id="monB"><rect x="378" y="50" width="216" height="126" rx="2"/></clipPath>
+    <g id="dotsB">
+      <circle cx="7" cy="5" r="1.7" fill="#ff5f57"/>
+      <circle cx="13.5" cy="5" r="1.7" fill="#febc2e"/>
+      <circle cx="20" cy="5" r="1.7" fill="#28c840"/>
     </g>
   </defs>
 
-  <!-- The external monitor, plugged back in, with the two windows that
-       live on it. -->
-  <rect x="24" y="22" width="266" height="166" rx="9" fill="#2f3a3e"/>
-  <rect x="34" y="32" width="246" height="146" rx="3" fill="#ffffff"/>
-  <g clip-path="url(#monScreenB)">
-    <g transform="translate(44,44)">
-      <rect width="142" height="122" rx="5" fill="#ffffff" stroke="#0f6b6b" stroke-width="1.4"/>
-      <rect width="142" height="12" rx="5" fill="#f5f7f8"/>
-      <use href="#barB" x="0" y="1.5"/>
-      <rect x="9" y="20" width="118" height="7" rx="3.5" fill="#e2e7e9"/>
-      <rect x="9" y="34" width="124" height="42" rx="3" fill="#e4f1f0"/>
-      <rect x="9" y="84" width="110" height="5" rx="2.5" fill="#e2e7e9"/>
-      <rect x="9" y="95" width="86" height="5" rx="2.5" fill="#e2e7e9"/>
-      <rect x="9" y="106" width="100" height="5" rx="2.5" fill="#e2e7e9"/>
-    </g>
-    <g transform="translate(194,44)">
-      <rect width="76" height="122" rx="5" fill="#ffffff" stroke="#0f6b6b" stroke-width="1.4"/>
-      <rect width="76" height="12" rx="5" fill="#f5f7f8"/>
-      <use href="#barB" x="0" y="1.5"/>
-      <rect x="8" y="21" width="42" height="6" rx="3" fill="#e2e7e9"/>
-      <rect x="8" y="36" width="60" height="5" rx="2.5" fill="#e2e7e9"/>
-      <rect x="8" y="48" width="60" height="5" rx="2.5" fill="#e2e7e9"/>
-      <rect x="8" y="60" width="60" height="5" rx="2.5" fill="#e2e7e9"/>
-      <rect x="8" y="72" width="60" height="5" rx="2.5" fill="#e2e7e9"/>
-      <rect x="8" y="84" width="44" height="5" rx="2.5" fill="#e2e7e9"/>
-    </g>
-  </g>
-  <rect x="142" y="188" width="30" height="24" fill="#cfd8da"/>
-  <rect x="107" y="212" width="100" height="10" rx="5" fill="#cfd8da"/>
+  <ellipse cx="160" cy="200" rx="140" ry="7" fill="#14181a" opacity=".05"/>
+  <ellipse cx="486" cy="192" rx="110" ry="6" fill="#14181a" opacity=".05"/>
 
   <!-- The laptop keeps the one window that was always its own. -->
-  <rect x="350" y="45" width="250" height="155" rx="9" fill="#2f3a3e"/>
-  <circle cx="475" cy="49.5" r="1.8" fill="#5b666b"/>
-  <rect x="358" y="53" width="234" height="139" rx="2" fill="#ffffff"/>
-  <g clip-path="url(#lapScreenB)">
-    <g transform="translate(374,68)">
-      <rect width="202" height="110" rx="5" fill="#ffffff" stroke="#0f6b6b" stroke-width="1.4"/>
-      <rect width="202" height="12" rx="5" fill="#f5f7f8"/>
-      <use href="#barB" x="0" y="1.5"/>
-      <rect x="10" y="24" width="70" height="5" rx="2.5" fill="#e4f1f0"/>
-      <rect x="20" y="38" width="120" height="5" rx="2.5" fill="#e2e7e9"/>
-      <rect x="20" y="52" width="56" height="5" rx="2.5" fill="#e4f1f0"/>
-      <rect x="10" y="66" width="150" height="5" rx="2.5" fill="#e2e7e9"/>
-      <rect x="20" y="80" width="96" height="5" rx="2.5" fill="#e2e7e9"/>
-      <rect x="20" y="94" width="130" height="5" rx="2.5" fill="#e2e7e9"/>
+  <rect x="52" y="26" width="216" height="140" rx="9" fill="#2f3a3e"/>
+  <circle cx="160" cy="30.5" r="1.8" fill="#5b666b"/>
+  <rect x="60" y="34" width="200" height="124" rx="2" fill="#ffffff"/>
+  <g clip-path="url(#lapB)">
+    <g transform="translate(72,48)">
+      <rect width="176" height="96" rx="5" fill="#ffffff" stroke="#0f6b6b" stroke-width="1.3"/>
+      <rect width="176" height="11" rx="5" fill="#f5f7f8"/>
+      <use href="#dotsB" x="0" y="1"/>
+      <rect x="10" y="20" width="60" height="4.5" rx="2.2" fill="#e4f1f0"/>
+      <rect x="18" y="32" width="104" height="4.5" rx="2.2" fill="#e2e7e9"/>
+      <rect x="18" y="44" width="48" height="4.5" rx="2.2" fill="#e4f1f0"/>
+      <rect x="10" y="56" width="130" height="4.5" rx="2.2" fill="#e2e7e9"/>
+      <rect x="18" y="68" width="84" height="4.5" rx="2.2" fill="#e2e7e9"/>
+      <rect x="18" y="80" width="112" height="4.5" rx="2.2" fill="#e2e7e9"/>
     </g>
   </g>
-  <path d="M336 200h278l14 18H322z" fill="#dfe5e7"/>
-  <path d="M336 200h278l2 3H334z" fill="#cfd8da"/>
-  <rect x="440" y="209" width="70" height="4" rx="2" fill="#cfd8da"/>
+  <!-- The base: silver, with the dark keyboard and the trackpad in front. -->
+  <path d="M44 166h232l22 30H22z" fill="#e7ecee"/>
+  <path d="M44 166h232l3 4H41z" fill="#cfd8da"/>
+  <path d="M58 172h204l10 15H48z" fill="#2f3a3e"/>
+  <g fill="#6f7d82">
+    <rect x="61" y="174.2" width="196" height="2" rx="1"/>
+    <rect x="59.5" y="178.2" width="199" height="2" rx="1"/>
+    <rect x="58" y="182.2" width="202" height="2" rx="1"/>
+  </g>
+  <rect x="136" y="188" width="48" height="5" rx="2.5" fill="#cfd8da"/>
+  <rect x="22" y="193" width="276" height="3" rx="1.5" fill="#cfd8da"/>
+  <rect x="143" y="193" width="34" height="3" rx="1.5" fill="#b9c4c7"/>
+
+  <!-- The cable, back in the port. -->
+  <path d="M292 180c26 14 48 6 70-20" fill="none" stroke="#5b666b" stroke-width="3" stroke-linecap="round"/>
+  <rect x="286" y="176" width="12" height="8" rx="2" fill="#5b666b"/>
+  <rect x="366" y="150" width="8" height="14" rx="2" fill="#2f3a3e"/>
+
+  <!-- The portable monitor: a thin panel on its folding stand, lit, with
+       the two windows that live on it. -->
+  <rect x="372" y="44" width="228" height="138" rx="7" fill="#2f3a3e"/>
+  <rect x="378" y="50" width="216" height="126" rx="2" fill="#ffffff"/>
+  <g clip-path="url(#monB)">
+    <g transform="translate(388,60)">
+      <rect width="124" height="106" rx="5" fill="#ffffff" stroke="#0f6b6b" stroke-width="1.3"/>
+      <rect width="124" height="11" rx="5" fill="#f5f7f8"/>
+      <use href="#dotsB" x="0" y="1"/>
+      <rect x="9" y="19" width="100" height="6" rx="3" fill="#e2e7e9"/>
+      <rect x="9" y="31" width="106" height="36" rx="3" fill="#e4f1f0"/>
+      <rect x="9" y="73" width="94" height="4.5" rx="2.2" fill="#e2e7e9"/>
+      <rect x="9" y="83" width="72" height="4.5" rx="2.2" fill="#e2e7e9"/>
+      <rect x="9" y="93" width="86" height="4.5" rx="2.2" fill="#e2e7e9"/>
+    </g>
+    <g transform="translate(520,60)">
+      <rect width="66" height="106" rx="5" fill="#ffffff" stroke="#0f6b6b" stroke-width="1.3"/>
+      <rect width="66" height="11" rx="5" fill="#f5f7f8"/>
+      <use href="#dotsB" x="0" y="1"/>
+      <rect x="8" y="19" width="36" height="5" rx="2.5" fill="#e2e7e9"/>
+      <rect x="8" y="32" width="50" height="4.5" rx="2.2" fill="#e2e7e9"/>
+      <rect x="8" y="43" width="50" height="4.5" rx="2.2" fill="#e2e7e9"/>
+      <rect x="8" y="54" width="50" height="4.5" rx="2.2" fill="#e2e7e9"/>
+      <rect x="8" y="65" width="50" height="4.5" rx="2.2" fill="#e2e7e9"/>
+      <rect x="8" y="76" width="34" height="4.5" rx="2.2" fill="#e2e7e9"/>
+    </g>
+  </g>
+  <path d="M556 182l32 24h-44z" fill="#cfd8da"/>
+  <rect x="396" y="182" width="180" height="4" rx="2" fill="#cfd8da"/>
 </svg>
