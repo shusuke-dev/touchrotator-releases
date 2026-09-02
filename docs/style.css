@@ -488,6 +488,13 @@ article section { border: 0; padding: 1.5rem 0 0; }
     animation-duration: .001ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: .001ms !important;
+    /* The delays have to go too. Zeroing only the duration leaves the
+       staggered pieces holding their opening frame — which `both` fills
+       backwards, so they sit invisible — and then popping into place when
+       the delay runs out. That pop is the movement the visitor asked not
+       to see. */
+    animation-delay: .001ms !important;
+    transition-delay: .001ms !important;
   }
   .js .reveal { opacity: 1; transform: none; }
 }
